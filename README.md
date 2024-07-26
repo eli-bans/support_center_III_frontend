@@ -1,4 +1,4 @@
-## Explanation
+## File Structure
 
 ### Public Directory:
 - Contains the static files such as `index.html`, which serves as the main entry point for your React app.
