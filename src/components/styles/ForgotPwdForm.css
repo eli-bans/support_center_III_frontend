@@ -1,0 +1,93 @@
+.forgot-password-frame {
+    width: 737px;
+    height: 795px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .forgot-password-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 35px;
+    color: #2F2F2F;
+    margin-bottom: 20px;
+  }
+  
+  .forgot-password-description,
+  .forgot-password-note {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #2F2F2F;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .input-group {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .input-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #2F2F2F;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .email-input {
+    width: 537px;
+    height: 55px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 40px 0 40px;
+    background-color: #F4F4F4;
+    font-size: 16px;
+    color: #2F2F2F;
+  }
+  
+  .input-icon {
+    position: absolute;
+    left: 10px;
+    color: #2F2F2F;
+    font-size: 24px;
+  }
+  
+  .send-email-button {
+    width: 537px;
+    height: 77px;
+    background-color: #7983FF;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .links {
+    text-align: center;
+  }
+  
+  .links .link {
+    color: #7983FF;
+    text-decoration: none;
+  }
+  
+  .links p {
+    margin: 5px 0;
+  }
+  

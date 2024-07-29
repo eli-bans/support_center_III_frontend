@@ -1,5 +1,7 @@
 // import { useState } from 'react'
-import Login from '../src/components/pages/Login'
+// import Login from '../src/components/pages/Login'
+// import Navbar from './components/common/Navbar'
+import ForgotPasswordForm from './components/auth/ForgotPwdForm'
 import './App.css'
 
 function App() {
@@ -7,7 +9,7 @@ function App() {
 
   return (
     <>
-      <Login />
+      <ForgotPasswordForm />
     </>
   )
 }
