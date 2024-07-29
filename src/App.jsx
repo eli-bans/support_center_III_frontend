@@ -1,5 +1,5 @@
 // import { useState } from 'react'
-import SignUp from '../src/components/pages/SignUp'
+import Login from '../src/components/pages/Login'
 import './App.css'
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <SignUp />
+      <Login />
     </>
   )
 }
