@@ -4,7 +4,9 @@ function App() {
 
   return (
     <>
-      <h1>Reset</h1>
+      <div className="view-container">
+        <div className="main-view">"Hello world"</div>
+      </div>
     </>
   )
 }
