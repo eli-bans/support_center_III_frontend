@@ -1,0 +1,46 @@
+.navbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 15px 10px 0px 10px;
+}
+
+.name {
+    font-family: 'Major Mono Display', monospace;
+    font-size: 20px;
+}
+
+.sub-pages {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.register-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+
+.register-buttons button {
+    padding: 10px 20px;
+    border-radius: 15px;
+    border-width: 0;
+    font-weight: bolder;
+    color: white;
+}
+
+.register-buttons .login {
+    margin-left: 20px;
+    background-color: #473bf0;
+}
+
+.register-buttons .sign-up {
+    background-color: #333A90;
+    opacity: 50%;
+}
+
+
+

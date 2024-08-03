@@ -47,11 +47,10 @@
   display: flex;
   justify-content: center;
   background: linear-gradient(120deg, white 0%, #fbe1e9 10%, #cdd0f8 80%, white 100%);
+  font-family: 'Poppins', sans-serif;
 }
 
 .main-view {
-  max-width: 1280px;
-  min-width: 1280px;
-  background-color: transparent
-
+  max-width: 1020px;
+  min-width: 1020px;
 }
