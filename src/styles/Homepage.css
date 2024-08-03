@@ -1,0 +1,81 @@
+.homepage {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins';
+    position: relative;
+}
+
+.top-left {
+    position: absolute;
+    height: 60px;
+    top: 100px;
+}
+
+.top-right {
+    position: absolute;
+    height: 100px;
+    top: 70px;
+    right: -30px;
+}
+
+.bottom-left {
+    position: absolute;
+    height: 100px;
+    top: 550px
+}
+
+.home > .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.home-body {
+    background-color: transparent;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.home-body .words {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.home-body .main-text {
+    font-weight: bolder;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.home-body .sub-text {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.home-body .words button {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+    border: none;
+    border-radius: 9px;
+    font-weight: bold;
+    color: white;
+    background-color: #473bf0;
+}
+
+.home-body .graphic {
+    display: flex;
+    justify-content: end;
+}
+
+.home-body .graphic img {
+    height: 400px;
+}

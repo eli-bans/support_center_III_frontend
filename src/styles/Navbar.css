@@ -3,6 +3,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     padding: 25px 10px 0px 10px;
     align-items: center;
+    height: 30;
 }
 
 .name {

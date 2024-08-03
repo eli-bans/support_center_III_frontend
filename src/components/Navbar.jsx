@@ -4,7 +4,7 @@ import '../styles/Navbar.css'
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div className="name">Support Center</div>
+      <div className="name">SupportCenter</div>
       <div className="sub-pages">
         <div className="home">Home</div>
         <div className="tutor">Find a tutor</div>
