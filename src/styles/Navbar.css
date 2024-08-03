@@ -10,12 +10,20 @@
     font-size: 20px;
 }
 
+.name:hover {
+    cursor: pointer;
+}
+
 .sub-pages {
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     font-size: 14px;
+}
+
+.sub-pages div:hover {
+    cursor: pointer;
 }
 
 .register-buttons {
@@ -31,6 +39,10 @@
     border-width: 0;
     font-weight: bolder;
     color: white;
+}
+
+.register-buttons button:hover {
+    cursor: pointer;
 }
 
 .register-buttons .login {
