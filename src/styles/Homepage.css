@@ -3,26 +3,6 @@
     display: flex;
     flex-direction: column;
     font-family: 'Poppins';
-    position: relative;
-}
-
-.top-left {
-    position: absolute;
-    height: 60px;
-    top: 100px;
-}
-
-.top-right {
-    position: absolute;
-    height: 120px;
-    top: 70px;
-    right: -30px;
-}
-
-.bottom-left {
-    position: absolute;
-    height: 140px;
-    top: 560px
 }
 
 .home > .navbar {
@@ -37,7 +17,31 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+    min-height: 550px;
+    position: relative;
 }
+
+
+.top-left {
+    position: absolute;
+    height: 60px;
+    top: 40px;
+}
+
+.top-right {
+    position: absolute;
+    height: 120px;
+    top: 7px;
+    right: -40px;
+}
+
+.bottom-left {
+    position: absolute;
+    height: 160px;
+    top: 460px;
+    z-index: 999;
+}
+
 
 .home-body .words {
     display: flex;
@@ -83,3 +87,81 @@
 .home-body .graphic img {
     height: 400px;
 }
+
+.second-segment {
+    background-color: white;
+    width: 100vw; /* Occupy the full width of the viewport */
+    margin-left: calc((100% - 100vw) / 2);
+    background-color: white;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    box-shadow: 0px -5px 10px 4px #d3bec48e;
+    display: flex;
+    justify-content: center;
+}
+
+.second-segment .segment-content {
+    max-width: 1020px;
+    min-width: 1020px;
+    display: flex;
+    flex-direction: column;
+    /* background-color: rebeccapurple; */
+    gap: 60px;
+    padding: 40px 0px;
+    min-height: 550px;
+    position: relative;
+    height: 600px;
+}
+
+.second-middle {
+    position: absolute;
+    height: 90px;
+    top: 100px;
+    right: 0px
+}
+
+.second-segment .segment-content .row-one {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.13);
+    padding: 30px 100px;
+    z-index: 998;
+}
+
+.second-segment .segment-content .row-two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    z-index: 998;
+}
+
+.second-segment .segment-content .row-two .title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.second-segment .segment-content .row-two .desc {
+    font-size: 11px;
+}
+
+.second-segment .segment-content .row-three {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 90px;
+    z-index: 998;
+}
+
+.second-segment .segment-content .line-groups {
+    height: 350px;
+    width: 800px;
+    position: absolute;
+    top: 270px;
+    right: 160px;
+    z-index: 990;
+}
+

@@ -4,6 +4,11 @@ import blackWomen from '../assets/BlackWomen.png';
 import bottomLeftImage from '../assets/Cone_01.png';
 import topLeftImage from '../assets/Cone_02.png';
 import topRightImage from '../assets/Cone_03.png';
+import InfoCard from "../components/homepage/InfoCard";
+import TechImage from "../assets/Technology.png";
+import CourseCard from "../components/homepage/CourseCard";
+import SecondMiddleImage from "../assets/Cone_04.png";
+import BackLines from '../assets/line_groups.png';
 
 
 
@@ -30,10 +35,32 @@ function Homepage () {
                 <div className="graphic">
                     <img className='black-women' src={blackWomen} alt="Image of black women"/>
                 </div>
+                <img className="top-left" src={topLeftImage} alt="Top Left Image" />
+                <img className="top-right" src={topRightImage} alt="Top Right Image" />
+                <img className="bottom-left" src={bottomLeftImage} alt="Bottom Left Image" />
             </div>
-            <img className="top-left" src={topLeftImage} alt="Top Left Image" />
-            <img className="top-right" src={topRightImage} alt="Top Right Image" />
-            <img className="bottom-left" src={bottomLeftImage} alt="Bottom Left Image" />
+            <div className="second-segment">
+                <div className="segment-content">
+                    <div className="row-one">
+                        <InfoCard stat={"1M+"} desc={"Customers visit Albinos every month"} />
+                        <InfoCard stat={"93%"} desc={"Satisfaction rate from our customers."} />
+                        <InfoCard stat={"4.9"} desc={"Customers visit Albinos every month"} />
+                    </div>
+                    <div className="row-two">
+                        <div className="title">Services we offer for you</div>
+                        <div className="desc">With lots of unique blocks, you can easily build a page without <br /> coding. Build your next landing page.</div>
+                    </div>
+                    <div className="row-three">
+                        <CourseCard techImage={TechImage} desc={"Programming for CS"}/>
+                        <CourseCard techImage={TechImage} desc={"Data Structures and Algorithms"}/>
+                        <CourseCard techImage={TechImage} desc={"Introduction to AI"}/>
+                        <CourseCard techImage={TechImage} desc={"Database Systems"}/>
+                    </div>
+                    <img className="second-middle" src={SecondMiddleImage} alt="Adding image" />
+                    <img className="line-groups" src={BackLines} alt="Background" />
+                    
+                </div>
+            </div>
             
 
         </div>

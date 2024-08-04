@@ -49,6 +49,9 @@
   background: linear-gradient(120deg, white 0%, #fbe1e9 10%, #cdd0f8 80%, white 100%);
   font-family: 'Poppins', sans-serif;
   overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
 }
 
 .main-view {
