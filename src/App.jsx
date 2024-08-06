@@ -1,15 +1,16 @@
-// import { useState } from 'react'
-// import Login from '../src/components/pages/Login'
-// import Navbar from './components/common/Navbar'
-import ForgotPasswordForm from './components/auth/ForgotPwdForm'
 import './App.css'
+import Navbar from './components/Navbar'
+import Homepage from './pages/Homepage'
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   return (
     <>
-      <ForgotPasswordForm />
+      <div className="view-container">
+        <div className="main-view">
+          <Homepage />
+        </div>
+      </div>
     </>
   )
 }
