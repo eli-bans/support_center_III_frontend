@@ -13,6 +13,9 @@ import ServiceCard from "../components/homepage/ServiceCard";
 import BlackCalendar from "../assets/black-calendar.png";
 import ThirdTopRight from "../assets/Cone_05.png";
 import ThirdTopLeft from "../assets/Cone_06.png";
+import FourthPersonImg from "../assets/person-image.jfif";
+import TestimonyCard from "../components/homepage/TestimonyCard";
+import FourthTopLeft from "../assets/Cone_07.png";
 
 
 
@@ -96,6 +99,30 @@ function Homepage () {
                         <img src={ThirdTopRight} alt="Cone image" className="third-right" />
                         <img src={ThirdTopLeft} alt="Cone image" className="third-left" />
                     </div>
+                </div>
+            </div>
+            <div className="fourth-segment">
+                <div className="fourth-segment-content">
+                    <div className="title">Testimonies</div>
+                    <div className="testimonies">
+                        <TestimonyCard FourthPersonImg={FourthPersonImg} 
+                            comment={"You made it simple. My new site is so much faster & easier to work with Albino"} 
+                            name={"Ilya Vasin"} 
+                            role={"Software Engineer"} 
+                        />
+                        <TestimonyCard FourthPersonImg={FourthPersonImg} 
+                            comment={"You made it simple. My new site is so much faster & easier to work with Albino"} 
+                            name={"Ilya Vasin"} 
+                            role={"Software Engineer"} 
+                        />
+                        <TestimonyCard FourthPersonImg={FourthPersonImg} 
+                            comment={"You made it simple. My new site is so much faster & easier to work with Albino"} 
+                            name={"Ilya Vasin"} 
+                            role={"Software Engineer"} 
+                        />
+                    </div>
+                    <img src={FourthTopLeft} alt="Image of icon" className="fourth-top-left" />
+
                 </div>
             </div>
             

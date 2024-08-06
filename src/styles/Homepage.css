@@ -286,7 +286,48 @@
     align-items: center;
     margin-left: 30px;
     padding: 0px 10px;
+}
 
+.fourth-segment {
+    background-color: white;
+    width: 100vw;
+    margin-left: calc((100% - 100vw) / 2);
+    display: flex;
+    justify-content: center;
+    height: 800px;
+    padding: 100px 20px;
+    align-items: center;
+}
+
+.fourth-segment-content {
+    width: 1020px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.fourth-segment-content .fourth-top-left {
+    position: absolute;
+    height: 100px;
+    top: -40px;
+    left: -80px;
+}
+
+.fourth-segment-content .title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+.fourth-segment-content .testimonies {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10px 30px;
 }
 
 
