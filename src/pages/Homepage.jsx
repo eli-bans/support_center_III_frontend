@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Navbar from "../components/Navbar";
 import "../styles/Homepage.css";
 import blackWomen from '../assets/BlackWomen.png';
 import bottomLeftImage from '../assets/Cone_01.png';
@@ -160,9 +158,6 @@ function Homepage () {
                 </div>
             </div>
             <Footer />
-
-            
-
         </div>
     );
 }
