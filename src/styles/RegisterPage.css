@@ -1,0 +1,149 @@
+
+.form-segment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.graphic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.graphic img {
+    height: 400px;
+}
+
+.form-segment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.form {
+    padding: 50px 30px;
+}
+
+.form h1 {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-bottom: 15px;
+}
+
+.form form{
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: white;
+    padding: 80px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 0px 7px 4px rgba(26, 25, 25, 0.185);
+
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.input-field label {
+    font-size: 12px;
+}
+
+.input-entry {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    background-color: #F4F4F4;
+    width: 99%;
+    /* padding: 5px 20px 5px 20px; */
+    padding: 3px 0px;
+    border-radius: 15px;
+    margin-left: 5px;
+    border: solid 1px #7982ff2f;
+}
+
+.input-entry .lead-icons {
+    margin-left: 20px;
+}
+
+.input-entry .trail-icons {
+    margin-right: 20px;
+}
+
+.input-entry .trail-icons:hover {
+    cursor: pointer;
+}
+
+.input-entry input {
+    padding: 8px 0px;
+    width: 70%;
+    border: none;
+    background-color: #F4F4F4;
+}
+
+.input-entry input:focus {
+    border: none;
+    outline: none; /* Ensures no default outline is shown */
+}
+
+.input-entry input::placeholder {
+    color: rgb(139, 134, 134);
+    font-size: 11px;
+}
+
+.form .end-text {
+    font-size: 10px;
+    margin-top: -10px;
+}
+
+.form .end-text .advice {
+    font-weight: bold;
+    padding: 0px 10px;
+}
+
+.form .end-text .forget-password {
+    text-align: right;
+    color: #6358DC;
+    font-weight: 600;
+}
+
+.form .end-text .forget-password:hover {
+    cursor: pointer;
+}
+
+.form button {
+    background-color: #7983FF;
+    color: white;
+    padding: 15px 0px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.form button:hover {
+    cursor: pointer;
+}
+
+.form .existing-account {
+    text-align: center;
+    font-size: 10px;
+}
+
+.form .existing-account span {
+    color: #7983FF;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.form .existing-account span:hover {
+    cursor: pointer;
+}
