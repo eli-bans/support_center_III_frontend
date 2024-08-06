@@ -29,7 +29,7 @@ function Homepage () {
     return (
         
         <div className="homepage">
-            <Navbar />
+            
             <div className="home-body">
                 <div className="words">
                     <div className="main-text">

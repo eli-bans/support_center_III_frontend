@@ -8,6 +8,7 @@ function App() {
     <>
       <div className="view-container">
         <div className="main-view">
+          <Navbar />
           <Homepage />
         </div>
       </div>
