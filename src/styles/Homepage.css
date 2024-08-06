@@ -92,7 +92,6 @@
     background-color: white;
     width: 100vw; /* Occupy the full width of the viewport */
     margin-left: calc((100% - 100vw) / 2);
-    background-color: white;
     border-top-left-radius: 60px;
     border-top-right-radius: 60px;
     box-shadow: 0px -5px 10px 4px #d3bec48e;
@@ -164,4 +163,130 @@
     right: 160px;
     z-index: 990;
 }
+
+.break-segment {
+    height: 30px;
+    background-color: #473BF0;
+    width: 100vw;
+    margin-left: calc((100% - 100vw) / 2);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 12px;
+    box-shadow: 9px 15px 25px #f0c8d3a1;
+    z-index: 900;
+}
+
+.break-segment button {
+    padding: 7px 15px;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    color: #473BF0;
+}
+
+.third-segment {
+    display: flex;
+    width: 100vw;
+    margin-left: calc((100% - 100vw) / 2);
+    display: flex;
+    justify-content: center;
+    height: 1000px;
+    background-color: white;
+}
+
+.third-segment .third-segment-content {
+    background-color: #f4f7fa;
+    width: 100vw;
+    margin-left: calc((100% - 100vw) / 2);
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    /* padding: 70px 0px 0px 0px; */
+}
+
+.third-segment .third-segment-content .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 50px 0px;
+    width: 1020px;
+    position: relative;
+}
+
+.third-segment-content .third-right {
+    position: absolute;
+    height: 120px;
+    top: 20px;
+    right: -60px;
+}
+
+.third-segment-content .third-left {
+    position: absolute;
+    height: 100px;
+    top: 30px;
+    left: 70px;
+}
+
+.third-segment-content .content .col-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.third-segment-content .content .col-image img{
+    height: 290px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.404);
+}
+
+.third-segment-content .content .col-info {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    
+}
+
+.col-info .first {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.col-info .first .title {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.col-info .first .sub-title {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.col-info .next {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.col-info .next button {
+    width: 170px;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: #473BF0;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 30px;
+    padding: 0px 10px;
+
+}
+
 
