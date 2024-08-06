@@ -5,11 +5,11 @@
     font-family: 'Poppins';
 }
 
-.home > .navbar {
+/* .home > .navbar {
     position: sticky;
     top: 0;
     z-index: 1000;
-}
+} */
 
 .home-body {
     background-color: transparent;
@@ -338,7 +338,7 @@
     display: flex;
     justify-content: center;
     padding: 80px 20px;
-    /* max-height: 800px; */
+    height: 800px;
 }
 
 .fifth-segment-content {
