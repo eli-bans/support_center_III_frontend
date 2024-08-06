@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Navbar from "../components/Navbar";
 import "../styles/Homepage.css";
 import blackWomen from '../assets/BlackWomen.png';
@@ -6,6 +7,9 @@ import topLeftImage from '../assets/Cone_02.png';
 import topRightImage from '../assets/Cone_03.png';
 import InfoCard from "../components/homepage/InfoCard";
 import TechImage from "../assets/Technology.png";
+import DSAImage from "../assets/DSAPic.png";
+import DBImage from "../assets/DBPic.png";
+import AIImage from "../assets/IntroToAi.png";
 import CourseCard from "../components/homepage/CourseCard";
 import SecondMiddleImage from "../assets/Cone_04.png";
 import BackLines from '../assets/line_groups.png';
@@ -16,6 +20,7 @@ import ThirdTopLeft from "../assets/Cone_06.png";
 import FourthPersonImg from "../assets/person-image.jfif";
 import TestimonyCard from "../components/homepage/TestimonyCard";
 import FourthTopLeft from "../assets/Cone_07.png";
+import ChatIcon from "../assets/chat-round.png";
 
 
 
@@ -59,9 +64,9 @@ function Homepage () {
                     </div>
                     <div className="row-three">
                         <CourseCard techImage={TechImage} desc={"Programming for CS"}/>
-                        <CourseCard techImage={TechImage} desc={"Data Structures and Algorithms"}/>
-                        <CourseCard techImage={TechImage} desc={"Introduction to AI"}/>
-                        <CourseCard techImage={TechImage} desc={"Database Systems"}/>
+                        <CourseCard techImage={DSAImage} desc={"Data Structures and Algorithms"}/>
+                        <CourseCard techImage={AIImage} desc={"Introduction to AI"}/>
+                        <CourseCard techImage={DBImage} desc={"Database Systems"}/>
                     </div>
                     <img className="second-middle" src={SecondMiddleImage} alt="Adding image" />
                     <img className="line-groups" src={BackLines} alt="Background" />
@@ -125,6 +130,63 @@ function Homepage () {
 
                 </div>
             </div>
+            <div className="fifth-segment">
+                <div className="fifth-segment-content">
+                    <div className="left-content">
+                        <img src={ChatIcon} alt="Chat Icon" className="chat-icon" />
+                        <h2>Get a free consultancy from our expert right now!</h2>
+                        <p>With lots of unique blocks, you can easily build a page without coding. Build your next landing page so quickly with Albino.</p>
+                    </div>
+                    <div className="right-content">
+                        <form className="consultancy-form">
+                            <label htmlFor="name">Name</label>
+                            <input type="text" id="name" placeholder="i.e. John Doe" />
+                            
+                            <label htmlFor="email">Email</label>
+                            <input type="email" id="email" placeholder="i.e. john@gmail.com" />
+                            
+                            <label htmlFor="phone">Phone</label>
+                            <input type="tel" id="phone" placeholder="i.e. 123-456-7890" />
+                            
+                            <label htmlFor="service">Which service do you need?</label>
+                            <select id="service" defaultValue="">
+                                <option value="" disabled>Select a service</option>
+                                {/* Add more options here */}
+                            </select>
+                            <button type="submit">Get Free Consultancy</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div className="footer-content">
+                    <div className="foot-col">
+                        <h3>Company</h3>
+                        <ul>
+                            <p>About us</p>
+                            <p>Contact us</p>
+                        </ul>
+                    </div>
+                    <div className="foot-col">
+                    <h3>Contact us</h3>
+                        <ul>
+                            <p>supportcenter@gmail.com</p>
+                            <p>+233-456-7890</p>
+                        </ul>
+                    </div>
+
+                </div>
+                <div className="footer-bottom">
+                    <p>© 2024 Copyright, All Rights Reserved. Made by the_support_center</p>
+                    <div className="social-icons">
+                        <FontAwesomeIcon icon="fab fa-twitter" size='1x'/>
+                        <FontAwesomeIcon icon="fab fa-facebook-f" />
+                        <FontAwesomeIcon icon="fab fa-instagram" />
+                        <FontAwesomeIcon icon="fab fa-linkedin-in" />
+                    </div>
+                </div>
+            </footer>
+
             
 
         </div>
