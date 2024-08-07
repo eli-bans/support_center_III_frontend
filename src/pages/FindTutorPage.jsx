@@ -8,6 +8,7 @@ import ProfileImage from '../assets/profile-image.png'
 import TutorTile from '../components/find_tutor/TutorTile';
 import FilterPane from '../components/find_tutor/FilterPane';
 import Footer from '../components/Footer';
+import Modal from '../components/find_tutor/Modal';
 
 // Tutor call structure
 const tutors = [
@@ -20,6 +21,8 @@ function FindTutorPage () {
     const [filters, setFilters] = useState({ subject: '', year: '' });
     const [filteredTutors, setFilteredTutors] = useState(tutors);
     const [searchTerm, setSearchTerm] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedTutor, setSelectedTutor] = useState(null);
 
     // Apply filters whenever filters state changes
     useEffect(() => {
@@ -51,6 +54,17 @@ function FindTutorPage () {
     // Handle search of tutors
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
+    };
+
+    // Handle showing modal
+    const openModal = (tutor) => {
+        setSelectedTutor(tutor);
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedTutor(null);
     };
 
     return (
@@ -108,6 +122,7 @@ function FindTutorPage () {
                                     image_path={tutor.image_path}
                                     stars={tutor.stars}
                                     year={tutor.year}
+                                    onViewProfile={() => openModal(tutor)}
                                 />
                             ))}
 
@@ -116,6 +131,11 @@ function FindTutorPage () {
                 </div>
             </div>
             <Footer />
+            <Modal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                user={selectedTutor}
+            />
         </>
     )
 

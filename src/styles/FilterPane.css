@@ -9,7 +9,7 @@
 
 .separator-bar {
     border: 0;
-    border-top: 1px solid grey;
+    border-top: 1px solid rgba(128, 128, 128, 0.249);
 }
 
 .subject-filter {

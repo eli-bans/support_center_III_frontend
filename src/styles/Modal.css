@@ -1,0 +1,144 @@
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.489);
+    height: 100%;
+    width: 100%;
+    z-index: 1100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    opacity: 1.0;
+    position: relative;
+    width: 700px;
+    height: 450px;
+    border-radius: 5px;
+}
+
+.modal-content .close-button {
+    color: black;
+    background-color: red;
+    border: none;
+    width: 20px;
+
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.modal-content .info {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    padding: 60px 50px;
+}
+
+.modal-content .info .selected-person .schedule-session {
+    border: solid 1px #0080FF;
+    background-color: #0080FF;
+    color: white;
+    padding: 10px 15px;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.modal-content .info .selected-person .schedule-session:hover {
+    cursor: pointer;
+}
+
+.modal-content .selected-person {
+    display: flex;
+    flex-direction: column;
+    padding-right: 5px;
+    gap: 3px;
+}
+
+.modal-content .selected-person hr {
+    border: 0;
+    border-top: 1px solid rgba(128, 128, 128,  0.438);
+}
+
+.modal-content .selected-person .stars {
+    font-size: 14px;
+}
+
+.modal-content .selected-person .star-icon {
+    color: gold;
+}
+
+.modal-content .selected-person span {
+    font-weight: normal;
+    font-size: 10px;
+    color: rgba(101, 98, 98, 0.616);
+}
+
+.modal-content .selected-person h1 {
+    font-size: 14px;
+}
+
+.modal-content .selected-person p {
+    font-size: 10px;
+    font-weight: bold;
+    color: rgba(77, 75, 75, 0.776);
+}
+
+.modal-content .selected-person img {
+    height: 140px;
+    width: 120px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.modal-content .selected-person .course-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.modal-content .selected-person .course-container .course-box {
+    padding: 1px 10px;
+    font-size: 9px;
+}
+
+.modal-content .person-about {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    padding: 20px 30px;
+}
+
+.modal-content .person-about h1 {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.modal-content .person-about h2 {
+    font-size: 12px;
+    color: #0080FF;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.modal-content .person-about hr {
+    border: 0;
+    border-top: 1px solid rgba(128, 128, 128, 0.438);   
+}
+
+.modal-content .person-about p {
+    font-size: 11px;
+    line-height: 22px;
+}
