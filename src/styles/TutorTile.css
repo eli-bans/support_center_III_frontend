@@ -1,0 +1,115 @@
+
+.list-item {
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    padding: 5px 10px
+}
+
+.list-item .details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.list-item .details .star-icon {
+    color: gold;
+}
+
+.list-item .details .name-stars {
+    border-bottom: solid 1px grey;
+    padding: 3px 0px;
+}
+
+.list-item .details .name-stars .person-name {
+    font-weight: bold;
+    font-size: 19px;
+    
+}
+
+.list-item .details .name-stars .person-name span {
+    font-weight: lighter;
+    font-size: 12px;
+    color: grey;
+}
+
+.list-item .details .courses-profile {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.list-item .details .courses-profile .profile-schedule {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.list-item .details .courses-profile .courses p{
+    font-size: 10px;
+}
+
+.graphic img {
+    height: 160px;
+    border-radius: 10px;
+}
+
+.profile-schedule button {
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+.profile-schedule .profile {
+    border: solid 1.5px #0080FF;
+    background-color: white;
+    color: #0080FF;
+}
+
+.profile-schedule .profile:hover {
+    cursor: pointer;
+}
+
+.profile-schedule .session {
+    border: solid 1px #0080FF;
+    background-color: #0080FF;
+    color: white;
+}
+
+.profile-schedule .session:hover {
+    cursor: pointer;
+}
+
+.courses-profile .courses p {
+    margin-bottom: 5px;
+}
+
+.courses .course-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+}
+
+.courses-profile .courses{
+    width: 330px;
+}
+
+.course-box {
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 0px 11px;
+    height: 28px;
+    font-size: 11px;
+    border-radius: 8px;
+    color: grey;
+
+}
+
+
+
