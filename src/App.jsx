@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import ForgetPasswordPage from './pages/ForgetPasswordPage';
+import FindTutorPage from './pages/FindTutorPage';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
               <Route path='/register' element={<RegisterPage />} />
               <Route path='/login' element={<LoginPage />} />
               <Route path='/forget-password' element={<ForgetPasswordPage />} />
+              <Route path='/find-tutor' element={<FindTutorPage />} />
             </Routes>
           </div>
         </div>
