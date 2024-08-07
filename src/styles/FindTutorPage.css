@@ -6,7 +6,6 @@
     gap: 20px;
 }
 
-
 .search-field {
     display: flex;
     flex-direction: column;
@@ -61,6 +60,8 @@
     font-size: 11px;
 }
 
+
+
 .results-section {
     width: 100%;
     background-color: white;
@@ -70,6 +71,45 @@
 
 .results-section .stats {
     background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 300px;
+    padding-top: 20px;
+}
+
+.results-section .stats .active-filters {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.results-section .stats .active-filters .filter-chip {
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+}
+
+.results-section .stats .active-filters p {
+    color: rgba(0, 0, 0, 0.447);
+}
+
+.results-section .stats .active-filters button {
+    background-color: transparent;
+    border: none;
+    color: grey;
+}
+
+.results-section .stats .filter-count {
+    font-size: 12px;
+    padding-right: 50px;
+    font-weight: bold;
+}
+
+.results-section .stats .filter-count span {
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.4);
 }
 
 .results-section .section-content {
@@ -83,5 +123,5 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 20px;
+    padding: 5px 20px 0px 5px;
 } 
