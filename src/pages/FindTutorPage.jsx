@@ -3,6 +3,7 @@ import '../styles/FindTutorPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ProfileImage from '../assets/profile-image.png'
 import TutorTile from '../components/find_tutor/TutorTile';
+import FilterPane from '../components/find_tutor/FilterPane';
 
 
 function FindTutorPage () {
@@ -26,10 +27,46 @@ function FindTutorPage () {
                     stats
                 </div>
                 <div className="section-content">
-                    <div className="filter">Filter</div>
+                    <div className="filter">
+                        <FilterPane />
+                    </div>
                     <div className="list-items">
-                        <TutorTile />
-                        <TutorTile />
+                        <TutorTile 
+                            key={1} 
+                            firstname={"Palal"} 
+                            lastname={"Asare"} 
+                            courses={["Chemistry", "Biology"]} 
+                            image_path={ProfileImage} 
+                            stars={5} 
+                            year={2025} 
+                        />
+                        <TutorTile 
+                            key={1} 
+                            firstname={"Palal"} 
+                            lastname={"Asare"} 
+                            courses={["Chemistry", "Biology"]} 
+                            image_path={ProfileImage} 
+                            stars={5} 
+                            year={2025} 
+                        />
+                        <TutorTile 
+                            key={1} 
+                            firstname={"Palal"} 
+                            lastname={"Asare"} 
+                            courses={["Chemistry", "Biology"]} 
+                            image_path={ProfileImage} 
+                            stars={5} 
+                            year={2025} 
+                        />
+                        <TutorTile 
+                            key={1} 
+                            firstname={"Palal"} 
+                            lastname={"Asare"} 
+                            courses={["Chemistry", "Biology", "Mathematics"]} 
+                            image_path={ProfileImage} 
+                            stars={5} 
+                            year={2025} 
+                        />
                     </div>
 
 

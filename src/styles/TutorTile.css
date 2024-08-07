@@ -1,6 +1,5 @@
 
 .list-item {
-    background-color: red;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -17,6 +16,11 @@
 
 .list-item .details .star-icon {
     color: gold;
+    font-size: 15px;
+}
+
+.list-item .details .name-stars .stars {
+    font-size: 11px;
 }
 
 .list-item .details .name-stars {
@@ -26,7 +30,7 @@
 
 .list-item .details .name-stars .person-name {
     font-weight: bold;
-    font-size: 19px;
+    font-size: 16px;
     
 }
 
@@ -53,15 +57,15 @@
 }
 
 .graphic img {
-    height: 160px;
+    height: 120px;
     border-radius: 10px;
 }
 
 .profile-schedule button {
-    padding: 13px 20px;
+    padding: 11px 18px;
     border-radius: 10px;
     font-weight: 600;
-    font-size: 11px;
+    font-size: 9px;
 }
 
 .profile-schedule .profile {
@@ -95,7 +99,7 @@
 }
 
 .courses-profile .courses{
-    width: 330px;
+    width: 320px;
 }
 
 .course-box {
@@ -104,7 +108,7 @@
     justify-content: center; 
     align-items: center;
     padding: 0px 11px;
-    height: 28px;
+    height: 25px;
     font-size: 11px;
     border-radius: 8px;
     color: grey;

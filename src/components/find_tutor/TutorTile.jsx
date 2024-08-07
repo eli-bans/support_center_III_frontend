@@ -1,23 +1,26 @@
 // import styles and images
 import '../../styles/TutorTile.css'
-import ProfileImage from '../../assets/profile-image.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-function TutorTile (){
+function TutorTile ({
+    key, firstname, lastname, 
+    image_path, stars, courses, 
+    year,  onViewProfile, onScheduleMeeting
+}){
 
     return (
         <div className="list-item">
 
             <div className="graphic">
-                <img className='image-profile' src={ProfileImage} alt="Image of profile" />
+                <img className='image-profile' src={image_path} alt="Image of profile" />
             </div>
 
             <div className="details">
 
                 <div className="name-stars">
 
-                    <p className="person-name">Daniel Chamberan  <span className='year'>C2025</span></p>
-                    <div className="stars"><FontAwesomeIcon className='star-icon' icon="fa-regular fa-star" /> 5</div>
+                    <p className="person-name">{firstname} {lastname}  <span className='year'>{year}</span></p>
+                    <div className="stars"><FontAwesomeIcon className='star-icon' icon="fa-regular fa-star" /> {stars}</div>
 
                 </div>{/* Close name-stars*/}
                 <div className="courses-profile">
@@ -26,17 +29,16 @@ function TutorTile (){
 
                         <p>Courses:</p>
                         <div className="course-container">
-                            <div className='course-box'>Databases</div>
-                            <div className='course-box'>Databases</div>
-                            <div className='course-box'>Databases</div>
-                            <div className='course-box'>Databases</div>
+                            {courses.map((course, index) => (
+                                <div className='course-box' key={index}>{course}</div>
+                            ))}
                         </div>{/* Close course container*/}
 
                     </div>{/* Close courses*/}
                     <div className="profile-schedule">
 
-                        <button className='profile'><FontAwesomeIcon icon="fa-regular fa-user" />  View Profile</button>
-                        <button className='session'><FontAwesomeIcon icon="fa-regular fa-calendar" />  Schedule Session</button>
+                        <button className='profile' onClick={onViewProfile}><FontAwesomeIcon icon="fa-regular fa-user" />  View Profile</button>
+                        <button className='session' onClick={onScheduleMeeting}><FontAwesomeIcon icon="fa-regular fa-calendar" />  Schedule Session</button>
 
                     </div> {/* Close profile schedule*/}
 

@@ -1,0 +1,54 @@
+/* FilterPane.css */
+.filter-component {
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0px 40px;
+  }
+
+.separator-bar {
+    border: 0;
+    border-top: 1px solid grey;
+}
+
+.subject-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.year-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+  
+  .filter-component .title {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  /* Default radio button styling */
+  .filter-component input[type="radio"] {
+    accent-color: #7983FF;
+    margin-right: 10px;
+    transform: scale(1.2);
+  }
+  
+  /* Default label styling */
+  .filter-component label {
+    color: grey;
+    font-weight: normal;
+  }
+  
+  /* Styling for selected radio button and label */
+  .filter-component input[type="radio"]:checked {
+    accent-color: #7983FF;
+  }
+  
+  .filter-component input[type="radio"]:checked + label {
+    color: #000; /* Darker color for selected label text */
+    font-weight: bold;
+  }
+  

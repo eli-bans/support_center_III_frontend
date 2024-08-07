@@ -69,22 +69,19 @@
 }
 
 .results-section .stats {
-    background-color: red;
-}
-
-.results-section .section-content {
-    background-color: yellow;
+    background-color: transparent;
 }
 
 .results-section .section-content {
     display: flex;
     flex-direction: row;
-    gap: 80px;
+    gap: 10px;
+    padding: 40px 30px;
 }
 
 .results-section .section-content .list-items {
-    background-color: yellow;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 20px;
 } 
