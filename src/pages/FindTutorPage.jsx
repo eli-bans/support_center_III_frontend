@@ -9,12 +9,13 @@ import TutorTile from '../components/find_tutor/TutorTile';
 import FilterPane from '../components/find_tutor/FilterPane';
 import Footer from '../components/Footer';
 import Modal from '../components/find_tutor/Modal';
+import BookingModal from '../components/find_tutor/BookingModal';
 
 // Tutor call structure
 const tutors = [
-    { id: 1, firstname: "Palal", lastname: "Asare", courses: ["Chemistry", "Data Structures & Algorithms"], image_path: ProfileImage, stars: 5, year: 2025 },
-    { id: 2, firstname: "Jane", lastname: "Doe", courses: ["Mathematics", "Physics"], image_path: ProfileImage, stars: 4, year: 2023 },
-    { id: 3, firstname: "John", lastname: "Smith", courses: ["English", "History"], image_path: ProfileImage, stars: 5, year: 2024 },
+    { id: 1, firstname: "Palal", lastname: "Asare", courses: ["Chemistry", "Data Structures & Algorithms"], image_path: ProfileImage, stars: 5, year: 2025, calendlyUrl: "https://calendly.com/palalasare/30min" },
+    { id: 2, firstname: "Jane", lastname: "Doe", courses: ["Mathematics", "Physics"], image_path: ProfileImage, stars: 4, year: 2023, calendlyUrl: "https://calendly.com/palalasare/30min" },
+    { id: 3, firstname: "John", lastname: "Smith", courses: ["English", "History"], image_path: ProfileImage, stars: 5, year: 2024, calendlyUrl: "https://calendly.com/palalasare/30min" },
 ];
 
 function FindTutorPage () {
@@ -23,6 +24,8 @@ function FindTutorPage () {
     const [searchTerm, setSearchTerm] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedTutor, setSelectedTutor] = useState(null);
+    const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+    const [selectedCalendlyUrl, setSelectedCalendlyUrl] = useState('');
 
     // Apply filters whenever filters state changes
     useEffect(() => {
@@ -65,6 +68,18 @@ function FindTutorPage () {
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedTutor(null);
+    };
+
+    // Modal for booking a meeting
+    const openBookingModal = (calendlyUrl) => {
+        setSelectedCalendlyUrl(calendlyUrl);
+        setIsBookingModalOpen(true);
+    };
+
+    // Modal for closing the schedule modal
+    const closeBookingModal = () => {
+        setIsBookingModalOpen(false);
+        setSelectedCalendlyUrl('');
     };
 
     return (
@@ -123,6 +138,7 @@ function FindTutorPage () {
                                     stars={tutor.stars}
                                     year={tutor.year}
                                     onViewProfile={() => openModal(tutor)}
+                                    onScheduleMeeting={() => openBookingModal(tutor.calendlyUrl)}
                                 />
                             ))}
 
@@ -131,10 +147,19 @@ function FindTutorPage () {
                 </div>
             </div>
             <Footer />
+
+            {/* Open modal to view profile */}
             <Modal
                 isOpen={isModalOpen}
                 onClose={closeModal}
                 user={selectedTutor}
+            />
+
+            {/* Open booking modal to view profile */}
+            <BookingModal
+                isOpen={isBookingModalOpen}
+                onClose={closeBookingModal}
+                calendlyUrl={selectedCalendlyUrl}
             />
         </>
     )
