@@ -119,7 +119,7 @@ function RegisterPage () {
                         </div>
                         <div className='end-text'>
                             <p className='advice'>Must be at least 8 characters</p>
-                            <Link to='forget-password'><p className='forget-password'>Forgot Password?</p></Link>
+                            <Link to='/forget-password'><p className='forget-password'>Forgot Password?</p></Link>
                         </div>
                         <button type='submit'>Sign Up</button>
                         <p className='existing-account'>Already have an account? <Link to='/login'><span>Login</span></Link></p>

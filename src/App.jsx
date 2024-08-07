@@ -9,6 +9,7 @@ import Homepage from './pages/Homepage'
 import Navbar from './components/Navbar'
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import ForgetPasswordPage from './pages/ForgetPasswordPage';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
               <Route path='/' element={<Homepage />} />
               <Route path='/register' element={<RegisterPage />} />
               <Route path='/login' element={<LoginPage />} />
+              <Route path='/forget-password' element={<ForgetPasswordPage />} />
             </Routes>
           </div>
         </div>
