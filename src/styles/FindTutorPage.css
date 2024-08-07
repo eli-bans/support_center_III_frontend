@@ -60,13 +60,12 @@
     font-size: 11px;
 }
 
-
-
 .results-section {
     width: 100%;
     background-color: white;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    padding-bottom: 200px;
 }
 
 .results-section .stats {
@@ -76,6 +75,7 @@
     justify-content: end;
     gap: 300px;
     padding-top: 20px;
+    position: relative;
 }
 
 .results-section .stats .active-filters {
@@ -83,6 +83,9 @@
     flex-direction: row;
     gap: 10px;
     font-size: 12px;
+    position: absolute;
+    left: 280px;
+
 }
 
 .results-section .stats .active-filters .filter-chip {

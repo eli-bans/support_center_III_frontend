@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ProfileImage from '../assets/profile-image.png'
 import TutorTile from '../components/find_tutor/TutorTile';
 import FilterPane from '../components/find_tutor/FilterPane';
+import Footer from '../components/Footer';
 
 // Tutor call structure
 const tutors = [
@@ -18,6 +19,7 @@ const tutors = [
 function FindTutorPage () {
     const [filters, setFilters] = useState({ subject: '', year: '' });
     const [filteredTutors, setFilteredTutors] = useState(tutors);
+    const [searchTerm, setSearchTerm] = useState('');
 
     // Apply filters whenever filters state changes
     useEffect(() => {
@@ -25,10 +27,13 @@ function FindTutorPage () {
         const filtered = tutors.filter(tutor => {
             const matchesSubject = subject ? tutor.courses.includes(subject) : true;
             const matchesYear = year ? tutor.year === year : true;
-            return matchesSubject && matchesYear;
+            const matchesSearchTerm = searchTerm ? 
+                tutor.firstname.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                tutor.lastname.toLowerCase().includes(searchTerm.toLowerCase()) : true;
+            return matchesSubject && matchesYear && matchesSearchTerm;
         });
         setFilteredTutors(filtered);
-    }, [filters]);
+    }, [filters, searchTerm]);
 
     // Filter data when user selects filter choice
     const handleFilterChange = (newFilters) => {
@@ -43,65 +48,75 @@ function FindTutorPage () {
         }));
     };
 
+    // Handle search of tutors
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
     return (
-        <div className="find-tutor">
-            <div className="search-section">
-                <div className="search-field">
-                    <div className="search-entry">
-                        <FontAwesomeIcon className='lead-icons' icon="fa-solid fa-search"/>
-                        <input 
-                            type='text'
-                            id='search' 
-                            placeholder='Search' 
-                        />
-                    </div>
-                </div>
-            </div>
-            <div className="results-section">
-                <div className="stats">
-                    <div className="active-filters">
-                        <p>Active Filters: </p>
-                        {filters.subject && (
-                            <div className="filter-chip">
-                                {filters.subject} <button onClick={() => removeFilter('subject')}>x</button>
-                            </div>
-                        )}
-                        {filters.year && (
-                            <div className="filter-chip">
-                                {filters.year} <button onClick={() => removeFilter('year')}>x</button>
-                            </div>
-                        )}
-                    </div>
-                    <div className="filter-count">
-                        {filteredTutors.length} <span>Tutors found</span>
-                    </div>
-                </div>
-                <div className="section-content">
-                    <div className="filter">
-
-                        {/* Component to handle the filtering of tutors */}
-                        <FilterPane onFilterChange={handleFilterChange}/>
-
-                    </div>
-                    <div className="list-items">
-
-                        {/* Display tutor tile based on the filtering results */}
-                        {filteredTutors.map(tutor => (
-                            <TutorTile
-                                key={tutor.id}
-                                firstname={tutor.firstname}
-                                lastname={tutor.lastname}
-                                courses={tutor.courses}
-                                image_path={tutor.image_path}
-                                stars={tutor.stars}
-                                year={tutor.year}
+        <>
+            <div className="find-tutor">
+                <div className="search-section">
+                    <div className="search-field">
+                        <div className="search-entry">
+                            <FontAwesomeIcon className='lead-icons' icon="fa-solid fa-search"/>
+                            <input 
+                                type='text'
+                                id='search' 
+                                placeholder='Search'
+                                value={searchTerm}
+                                onChange={handleSearchChange} 
                             />
-                        ))}
+                        </div>
+                    </div>
+                </div>
+                <div className="results-section">
+                    <div className="stats">
+                        <div className="active-filters">
+                            <p>Active Filters: </p>
+                            {filters.subject && (
+                                <div className="filter-chip">
+                                    {filters.subject} <button onClick={() => removeFilter('subject')}>x</button>
+                                </div>
+                            )}
+                            {filters.year && (
+                                <div className="filter-chip">
+                                    {filters.year} <button onClick={() => removeFilter('year')}>x</button>
+                                </div>
+                            )}
+                        </div>
+                        <div className="filter-count">
+                            {filteredTutors.length} <span>Tutors found</span>
+                        </div>
+                    </div>
+                    <div className="section-content">
+                        <div className="filter">
 
+                            {/* Component to handle the filtering of tutors */}
+                            <FilterPane onFilterChange={handleFilterChange}/>
+
+                        </div>
+                        <div className="list-items">
+
+                            {/* Display tutor tile based on the filtering results */}
+                            {filteredTutors.map(tutor => (
+                                <TutorTile
+                                    key={tutor.id}
+                                    firstname={tutor.firstname}
+                                    lastname={tutor.lastname}
+                                    courses={tutor.courses}
+                                    image_path={tutor.image_path}
+                                    stars={tutor.stars}
+                                    year={tutor.year}
+                                />
+                            ))}
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </>
     )
 
 }
