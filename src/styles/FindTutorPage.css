@@ -1,0 +1,130 @@
+.find-tutor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.search-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.search-field label {
+    font-size: 12px;
+}
+
+.search-entry {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    /* background-color: #F4F4F4; */
+    background-color: white;
+    width: 500px;
+    /* padding: 5px 20px 5px 20px; */
+    padding: 3px 0px;
+    border-radius: 15px;
+    margin-left: 5px;
+    border: solid 1px #7982ff2f;
+}
+
+.search-entry .lead-icons {
+    margin-left: 20px;
+}
+
+.search-entry .trail-icons {
+    margin-right: 20px;
+}
+
+.search-entry .trail-icons:hover {
+    cursor: pointer;
+}
+
+.search-entry input {
+    padding: 8px 0px;
+    width: 70%;
+    border: none;
+    background-color: white;
+}
+
+.search-entry input:focus {
+    border: none;
+    outline: none;
+}
+
+.search-entry input::placeholder {
+    color: rgb(139, 134, 134);
+    font-size: 11px;
+}
+
+.results-section {
+    width: 100%;
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding-bottom: 200px;
+}
+
+.results-section .stats {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 300px;
+    padding-top: 20px;
+    position: relative;
+}
+
+.results-section .stats .active-filters {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 12px;
+    position: absolute;
+    left: 280px;
+
+}
+
+.results-section .stats .active-filters .filter-chip {
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+}
+
+.results-section .stats .active-filters p {
+    color: rgba(0, 0, 0, 0.447);
+}
+
+.results-section .stats .active-filters button {
+    background-color: transparent;
+    border: none;
+    color: grey;
+}
+
+.results-section .stats .filter-count {
+    font-size: 12px;
+    padding-right: 50px;
+    font-weight: bold;
+}
+
+.results-section .stats .filter-count span {
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.results-section .section-content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 40px 30px;
+}
+
+.results-section .section-content .list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px 20px 0px 5px;
+} 
