@@ -1,6 +1,9 @@
 // Import external libraries
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
+// Import providers
+import { UserProvider } from './contexts/UserContext';
+
 // Import styles and images
 import './App.css'
 
@@ -16,20 +19,22 @@ function App() {
 
   return (
     <>
-      <Router>
-        <div className="view-container">
-          <div className="main-view">
-            <Navbar />
-            <Routes>
-              <Route path='/' element={<Homepage />} />
-              <Route path='/register' element={<RegisterPage />} />
-              <Route path='/login' element={<LoginPage />} />
-              <Route path='/forget-password' element={<ForgetPasswordPage />} />
-              <Route path='/find-tutor' element={<FindTutorPage />} />
-            </Routes>
+      <UserProvider>
+        <Router>
+          <div className="view-container">
+            <div className="main-view">
+              <Navbar />
+              <Routes>
+                <Route path='/' element={<Homepage />} />
+                <Route path='/register' element={<RegisterPage />} />
+                <Route path='/login' element={<LoginPage />} />
+                <Route path='/forget-password' element={<ForgetPasswordPage />} />
+                <Route path='/find-tutor' element={<FindTutorPage />} />
+              </Routes>
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </UserProvider>
     </>
   )
 }

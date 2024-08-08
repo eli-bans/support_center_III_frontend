@@ -1,15 +1,21 @@
 // External packages
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, {useState, useContext} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
+
+// Import contexts
+import { UserContext } from '../contexts/UserContext';
 
 // styling and image imports
 import '../styles/LoginPage.css';
-import BlackMeeting from '../assets/black-meeting.png';
 import Footer from '../components/Footer';
 import TwoBlackMen from '../assets/two-black-men.png';
 
 function LoginPage () {
+
+    // user states
+    const { setUser } = useContext(UserContext);
+    const navigate = useNavigate();
     
     // Hide and show password
     const [showPassword, setShowPassword] = useState(false);
@@ -39,12 +45,27 @@ function LoginPage () {
         try {
             // TODO: Make api request
 
+            const response = {
+                "id": 1,
+                "email": "elikembansah1@gmail.com",
+                "is_student": true,
+                "is_tutor": false,
+                "profile_picture": "http://127.0.0.1:8000/media/profile_pictures/None/IMG_2012.JPG"
+            }
+
+            setUser(response);
+
+            // TODO: Route to admin dashboard with switch
+
             // reset email
             setEmail('');
             setPassword('');
 
             // Set the password
             setShowPassword(false);
+
+            // Navigate back to home page
+            navigate('/');
 
         } catch (error) {
             console.error('Login failed:', error);
