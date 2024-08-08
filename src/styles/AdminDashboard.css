@@ -1,0 +1,97 @@
+.admin-dashboard {
+    width: 100vw;
+    margin-left: calc((100% - 100vw) / 2);
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    overflow-y: hidden;
+}
+
+.admin-dashboard .sidepane {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px;
+    max-height: 100vh;
+    background-color: white;
+    position: relative;
+}
+
+.admin-dashboard .sidepane h1 {
+    font-size: 20px;
+    margin-bottom: 50px;
+    font-family: 'Major Mono Display', monospace;
+    text-align: center;
+}
+
+.admin-dashboard .sidepane .sidetabs {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.admin-dashboard .sidepane .tabs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    color: #5F6C72;
+}
+
+.admin-dashboard .sidepane .tabs:hover {
+    cursor: pointer;
+}
+
+.admin-dashboard .sidepane .logout {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 30px;
+    gap: 20px;
+    color: #5F6C72;
+}
+
+.admin-dashboard .others {
+    padding: 80px 50px 0px 50px;
+}
+
+.admin-dashboard .others .dashboard-data{
+    background-color: white;
+    padding: 30px;
+    min-height: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.admin-dashboard .others .dashboard-data .heading h1 {
+    font-size: 18px;
+}
+
+.admin-dashboard .others .dashboard-data .heading p {
+    font-size: 12px;
+    color: rgba(41, 41, 41, 0.712);
+}
+
+
+.admin-dashboard .others .dashboard-data .details h1 {
+    font-size: 16px;
+}
+
+.admin-dashboard .others .dashboard-data .details .stats {
+    padding: 10px 7px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    row-gap: 25px;
+}
+
+
+
+
+
+
+
+
+

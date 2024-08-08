@@ -1,5 +1,5 @@
 // Import external libraries
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, useLocation} from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
 
 // Import providers
@@ -16,6 +16,7 @@ import LoginPage from './pages/LoginPage';
 import ForgetPasswordPage from './pages/ForgetPasswordPage';
 import FindTutorPage from './pages/FindTutorPage';
 import TutorDashboard from './pages/tutor/TutorDashboard';
+import AdminDashboard from './pages/admin/AdminDashboard';
 
 function App() {
 
@@ -23,29 +24,44 @@ function App() {
     <>
       <UserProvider>
         <Router>
-          <div className="view-container">
-            <div className="main-view">
-              <Navbar />
-              <Routes>
-                <Route path='/' element={<Homepage />} />
-                <Route path='/register' element={<RegisterPage />} />
-                <Route path='/login' element={<LoginPage />} />
-                <Route path='/forget-password' element={<ForgetPasswordPage />} />
-                <Route path='/find-tutor' element={<FindTutorPage />} />
-
-                {/* Protected Routes */}
-                <Route path='/tutor-dashboard' element={
-                  <PrivateRoute role="tutor">
-                    <TutorDashboard />
-                  </PrivateRoute>}
-                />
-
-              </Routes>
-            </div>
-          </div>
+          <AppContent />
         </Router>
       </UserProvider>
     </>
+  )
+}
+
+function AppContent(){
+  const location = useLocation();
+  
+  return(
+    <div className="view-container">
+      <div className="main-view">
+        {/* <Navbar /> */}
+        {location.pathname !== '/admin-dashboard' && <Navbar />}
+        <Routes>
+          <Route path='/' element={<Homepage />} />
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/forget-password' element={<ForgetPasswordPage />} />
+          <Route path='/find-tutor' element={<FindTutorPage />} />
+
+          {/* Protected Routes */}
+          <Route path='/tutor-dashboard' element={
+            <PrivateRoute role="tutor">
+              <TutorDashboard />
+            </PrivateRoute>}
+          />
+
+          <Route path='/admin-dashboard' element={
+            <PrivateRoute role="admin">
+              <AdminDashboard />
+            </PrivateRoute>}
+          />
+
+        </Routes>
+      </div>
+    </div>
   )
 }
 

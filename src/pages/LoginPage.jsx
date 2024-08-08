@@ -49,11 +49,12 @@ function LoginPage () {
                 "id": 1,
                 "email": "elikembansah1@gmail.com",
                 "is_student": false,
-                "is_tutor": true,
-                "is_admin": false,
+                "is_tutor": false,
+                "is_admin": true,
                 "profile_picture": "http://127.0.0.1:8000/media/profile_pictures/None/IMG_2012.JPG"
             }
 
+            // Determine user role
             const role = response.is_student ? 'student' : response.is_tutor ? 'tutor' : 'admin';
 
             setUser({
@@ -79,6 +80,7 @@ function LoginPage () {
                     navigate('/');
                     break;
                 case 'admin':
+                    navigate('/admin-dashboard');
                     break;
             }
 
