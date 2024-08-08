@@ -3,7 +3,7 @@ import '../../styles/TutorTile.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function TutorTile ({
-    key, firstname, lastname, 
+    firstname, lastname, 
     image_path, stars, courses, 
     year,  onViewProfile, onScheduleMeeting
 }){

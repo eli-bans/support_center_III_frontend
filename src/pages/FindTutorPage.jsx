@@ -10,12 +10,13 @@ import FilterPane from '../components/find_tutor/FilterPane';
 import Footer from '../components/Footer';
 import Modal from '../components/find_tutor/Modal';
 import BookingModal from '../components/find_tutor/BookingModal';
+import Payment from '../components/payment/Payment';
 
 // Tutor call structure
 const tutors = [
-    { id: 1, firstname: "Palal", lastname: "Asare", courses: ["Chemistry", "Data Structures & Algorithms"], image_path: ProfileImage, stars: 5, year: 2025, calendlyUrl: "https://calendly.com/palalasare/30min" },
-    { id: 2, firstname: "Jane", lastname: "Doe", courses: ["Mathematics", "Physics"], image_path: ProfileImage, stars: 4, year: 2023, calendlyUrl: "https://calendly.com/palalasare/30min" },
-    { id: 3, firstname: "John", lastname: "Smith", courses: ["English", "History"], image_path: ProfileImage, stars: 5, year: 2024, calendlyUrl: "https://calendly.com/palalasare/30min" },
+    { id: 1, email:"pinopalal11@gmail.com", firstname: "Palal", lastname: "Asare", courses: ["Chemistry", "Data Structures & Algorithms"], image_path: ProfileImage, stars: 5, year: 2025, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
+    { id: 2, email:"pinopalal11@gmail.com", firstname: "Jane", lastname: "Doe", courses: ["Mathematics", "Physics"], image_path: ProfileImage, stars: 4, year: 2023, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
+    { id: 3, email:"pinopalal11@gmail.com", firstname: "John", lastname: "Smith", courses: ["English", "History"], image_path: ProfileImage, stars: 5, year: 2024, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
 ];
 
 function FindTutorPage () {
@@ -26,6 +27,7 @@ function FindTutorPage () {
     const [selectedTutor, setSelectedTutor] = useState(null);
     const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
     const [selectedCalendlyUrl, setSelectedCalendlyUrl] = useState('');
+    const [isPaid, setIsPaid] = useState(false);
 
     // Apply filters whenever filters state changes
     useEffect(() => {
@@ -71,15 +73,29 @@ function FindTutorPage () {
     };
 
     // Modal for booking a meeting
-    const openBookingModal = (calendlyUrl) => {
-        setSelectedCalendlyUrl(calendlyUrl);
+    const openBookingModal = (tutor) => {
+        setSelectedCalendlyUrl(tutor.calendlyUrl);
+        setSelectedTutor(tutor);
         setIsBookingModalOpen(true);
+        console.log('working');
     };
 
     // Modal for closing the schedule modal
     const closeBookingModal = () => {
         setIsBookingModalOpen(false);
+        setSelectedTutor(null);
         setSelectedCalendlyUrl('');
+    };
+
+    // Payment success
+    const handlePaymentSuccess = () => {
+        setIsPaid(true);
+    };
+
+    // Payment error or close
+    const handlePaymentClose = () => {
+        setIsBookingModalOpen(false);
+        console.log('Payment closed');
     };
 
     return (
@@ -138,7 +154,7 @@ function FindTutorPage () {
                                     stars={tutor.stars}
                                     year={tutor.year}
                                     onViewProfile={() => openModal(tutor)}
-                                    onScheduleMeeting={() => openBookingModal(tutor.calendlyUrl)}
+                                    onScheduleMeeting={() => openBookingModal(tutor)}
                                 />
                             ))}
 
@@ -156,11 +172,23 @@ function FindTutorPage () {
             />
 
             {/* Open booking modal to view profile */}
-            <BookingModal
-                isOpen={isBookingModalOpen}
-                onClose={closeBookingModal}
-                calendlyUrl={selectedCalendlyUrl}
-            />
+            {isBookingModalOpen && (
+                isPaid ? (
+                    <BookingModal
+                        isOpen={isBookingModalOpen}
+                        onClose={closeBookingModal}
+                        calendlyUrl={selectedCalendlyUrl}
+                    />
+                 ) : (
+                    <Payment 
+                        amount={50}
+                        email={selectedTutor.email}
+                        onSuccess={handlePaymentSuccess}
+                        onClose={handlePaymentClose}
+                        subaccount={selectedTutor.subaccount}
+                    />
+                 )
+            )}
         </>
     )
 
