@@ -1,16 +1,20 @@
 // import libraries
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // import contexts
 import { UserContext } from '../contexts/UserContext';
 
 // import image and styling
 import '../styles/Navbar.css'
+import ProfileImage from '../assets/person-image.jfif';
+import ProfileDropdown from './ProfileDropdown';
 
 const Navbar = () => {
   const {user} = useContext(UserContext);
   const navigate = useNavigate();
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
   //Routing for protected routes
   const handleProtectedRoute = (path) => {
@@ -20,6 +24,11 @@ const Navbar = () => {
       navigate(path);
     }
   };
+
+  // Open dropdown
+  const openDropdown = () => {
+    setIsDropDownOpen(!isDropDownOpen);
+  }
 
   return (
     <nav className="navbar">
@@ -42,7 +51,11 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <p>Welcome {user.email}</p>
+            <div className='profile-button' onClick={openDropdown}>
+              <img className='profile-img' src={ProfileImage} onClick={openDropdown}  alt='Profile Image'/>
+              <FontAwesomeIcon className='dropdown-icon' icon="fa-solid fa-caret-down" />
+              <ProfileDropdown isOpen={isDropDownOpen} />
+            </div>
           </>
         )}
       </div>

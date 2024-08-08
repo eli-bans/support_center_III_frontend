@@ -48,14 +48,20 @@ function LoginPage () {
             const response = {
                 "id": 1,
                 "email": "elikembansah1@gmail.com",
-                "is_student": true,
-                "is_tutor": false,
+                "is_student": false,
+                "is_tutor": true,
+                "is_admin": false,
                 "profile_picture": "http://127.0.0.1:8000/media/profile_pictures/None/IMG_2012.JPG"
             }
 
-            setUser(response);
+            const role = response.is_student ? 'student' : response.is_tutor ? 'tutor' : 'admin';
 
-            // TODO: Route to admin dashboard with switch
+            setUser({
+                "id": response.id,
+                "email": response.email,
+                "role": role,
+                "profile_picture": response.profile_picture
+            });
 
             // reset email
             setEmail('');
@@ -65,7 +71,16 @@ function LoginPage () {
             setShowPassword(false);
 
             // Navigate back to home page
-            navigate('/');
+            switch (role) {
+                case 'student':
+                    navigate('/');
+                    break;
+                case 'tutor':
+                    navigate('/');
+                    break;
+                case 'admin':
+                    break;
+            }
 
         } catch (error) {
             console.error('Login failed:', error);
