@@ -13,13 +13,14 @@ import BookingModal from '../components/find_tutor/BookingModal';
 import Payment from '../components/payment/Payment';
 
 // Tutor call structure
-const tutors = [
-    { id: 1, email:"pinopalal11@gmail.com", firstname: "Palal", lastname: "Asare", courses: ["Chemistry", "Data Structures & Algorithms"], image_path: ProfileImage, stars: 5, year: 2025, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
-    { id: 2, email:"pinopalal11@gmail.com", firstname: "Jane", lastname: "Doe", courses: ["Mathematics", "Physics"], image_path: ProfileImage, stars: 4, year: 2023, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
-    { id: 3, email:"pinopalal11@gmail.com", firstname: "John", lastname: "Smith", courses: ["English", "History"], image_path: ProfileImage, stars: 5, year: 2024, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
-];
+// const tutors = [
+//     { id: 1, email:"pinopalal11@gmail.com", firstname: "Palal", lastname: "Asare", courses: ["Chemistry", "Data Structures & Algorithms"], image_path: ProfileImage, stars: 5, year: 2025, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
+//     { id: 2, email:"pinopalal11@gmail.com", firstname: "Jane", lastname: "Doe", courses: ["Mathematics", "Physics"], image_path: ProfileImage, stars: 4, year: 2023, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
+//     { id: 3, email:"pinopalal11@gmail.com", firstname: "John", lastname: "Smith", courses: ["English", "History"], image_path: ProfileImage, stars: 5, year: 2024, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
+// ];
 
 function FindTutorPage () {
+    const [tutors, setTutors] = useState([]);
     const [filters, setFilters] = useState({ subject: '', year: '' });
     const [filteredTutors, setFilteredTutors] = useState(tutors);
     const [searchTerm, setSearchTerm] = useState('');
@@ -28,6 +29,11 @@ function FindTutorPage () {
     const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
     const [selectedCalendlyUrl, setSelectedCalendlyUrl] = useState('');
     const [isPaid, setIsPaid] = useState(false);
+
+    // Fetch users once
+    useEffect(() => {
+        fetchTutors();
+    }, []);
 
     // Apply filters whenever filters state changes
     useEffect(() => {
@@ -42,6 +48,36 @@ function FindTutorPage () {
         });
         setFilteredTutors(filtered);
     }, [filters, searchTerm]);
+
+    // handle request for users 
+    const fetchTutors = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/tutors/'); // Replace with your actual API endpoint
+            const data = await response.json();
+
+            // Map the API response to the structure expected by your component
+            const mappedTutors = data.map(tutor => ({
+                id: tutor.id,
+                email: tutor.user.email,
+                firstname: tutor.first_name,
+                lastname: tutor.last_name,
+                courses: tutor.courses.split(','),
+                image_path: tutor.user.profile_picture || ProfileImage,
+                stars: tutor.rating,
+                year: tutor.year,
+                bio: tutor.bio,
+                calendlyUrl: "https://calendly.com/palalasare/30min",
+                subaccount: "ACCT_gphuk9eulaie9ha"
+            }));
+
+            console.log(mappedTutors);
+
+            setTutors(mappedTutors);
+            setFilteredTutors(mappedTutors); // Set initial filtered tutors to all tutors
+        } catch (error) {
+            console.error("Failed to fetch tutors:", error);
+        }
+    };
 
     // Filter data when user selects filter choice
     const handleFilterChange = (newFilters) => {

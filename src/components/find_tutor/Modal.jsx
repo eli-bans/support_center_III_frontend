@@ -49,7 +49,7 @@ function Modal ({isOpen, onClose, user}) {
                                 <hr />
                             </div>
                             <p>
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit commodo sollicitudin, curabitur tincidunt velit et eu semper sapien quisque. Felis dis habitant porttitor platea molestie erat tempor, sapien purus ligula turpis vitae dapibus, phasellus nisl odio id eros metus. Fames nunc arcu sociis mollis nec iaculis fusce, tristique commodo scelerisque felis velit facilisis himenaeos eget, pulvinar proin lobortis ligula condimentum tincidunt.
+                            {user.bio}
                             </p>
                         </div>
                     </div>

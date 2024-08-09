@@ -1,7 +1,8 @@
 // External packages
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, {useState, useContext} from 'react';
+import { UserContext } from '../contexts/UserContext';
+import {Link, useNavigate} from 'react-router-dom';
 
 // styling and image imports
 import '../styles/RegisterPage.css';
@@ -9,6 +10,9 @@ import BlackMeeting from '../assets/black-meeting.png';
 import Footer from '../components/Footer';
 
 function RegisterPage () {
+    // Navigate after login
+    const navigate = useNavigate();
+    const {setUser} = useContext(UserContext);
     
     // Hide and show passwords
     const [showPassword, setShowPassword] = useState(false);
@@ -44,12 +48,14 @@ function RegisterPage () {
         }
 
         try {
+            const role = {'is_student': true};
+
             const response = await fetch('http://127.0.0.1:8000/api/users/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ email, password, role }),
             });
 
             if (!response.ok) {
@@ -67,6 +73,12 @@ function RegisterPage () {
             // Set the password
             setShowPassword(false);
             setShowConfirmPassword(false);
+
+            // Set User details
+            setUser(data);
+
+            //navigate to login page
+            navigate('/');
 
         } catch (error) {
             console.error('Registration failed:', error);

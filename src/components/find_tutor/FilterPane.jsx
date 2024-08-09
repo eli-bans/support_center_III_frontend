@@ -8,20 +8,24 @@ function FilterComponent({ onFilterChange }) {
   const [selectedSubject, setSelectedSubject] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
 
-  const subjects = [
-    'Introduction to AI',
-    'Data Structures & Algorithms',
-    'Web Technologies',
-    'Modelling & Simulation',
-    'Headphone'
-  ];
+  // Mapping from full subject name to shorthand code
+  const subjectMapping = {
+    'Introduction to AI': 'AI',
+    'Data Structures & Algorithms': 'DS',
+    'Web Technologies': 'WT',
+    'Modelling & Simulation': 'MS',
+  };
+
+  const subjects = Object.keys(subjectMapping);
 
   const years = [2025, 2026, 2027];
 
   // For when a subject is selected
   const handleSubjectChange = (subject) => {
     setSelectedSubject(subject);
-    onFilterChange({ subject, year: selectedYear });
+    // Use the shorthand code in the filter change handler
+    const shorthand = subjectMapping[subject];
+    onFilterChange({ subject: shorthand, year: selectedYear });
   };
 
   // For when a year group is selected

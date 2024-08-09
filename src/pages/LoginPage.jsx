@@ -43,19 +43,23 @@ function LoginPage () {
         }
 
         try {
-            // TODO: Make api request
+            const response = await fetch('http://127.0.0.1:8000/api/login/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
 
-            const response = {
-                "id": 1,
-                "email": "elikembansah1@gmail.com",
-                "is_student": true,
-                "is_tutor": false,
-                "is_admin": false,
-                "profile_picture": "http://127.0.0.1:8000/media/profile_pictures/None/IMG_2012.JPG"
+            if (!response.ok) {
+                throw new Error('Registration failed');
             }
 
+            const data = await response.json();
+            console.log('Registration successful:', data);
+
             // Determine user role
-            const role = response.is_student ? 'student' : response.is_tutor ? 'tutor' : 'admin';
+            const role = data.is_student ? 'student' : data.is_tutor ? 'tutor' : 'admin';
 
             setUser({
                 "id": response.id,
