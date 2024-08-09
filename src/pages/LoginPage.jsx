@@ -72,9 +72,11 @@ function LoginPage () {
                 // Navigate based on the role
                 switch (loggedInUser.role) {
                     case 'student':
+                        console.log('route to student');
                         navigate('/');
                         break;
                     case 'tutor':
+                        console.log('route to tutor')
                         navigate('/');
                         break;
                     case 'admin':
