@@ -5,6 +5,9 @@ import {Link, useNavigate} from 'react-router-dom';
 
 // Import contexts
 import { UserContext } from '../contexts/UserContext';
+import { StudentContext } from '../contexts/StudentContext';
+import { TutorContext } from '../contexts/TutorContext';
+import { AdminContext } from '../contexts/AdminContext';
 
 // styling and image imports
 import '../styles/LoginPage.css';
@@ -12,6 +15,9 @@ import Footer from '../components/Footer';
 import TwoBlackMen from '../assets/two-black-men.png';
 
 function LoginPage () {
+    const { loginStudent } = useContext(StudentContext);
+    const { loginTutor } = useContext(TutorContext);
+    const { loginAdmin } = useContext(AdminContext);
 
     // user states
     const { setUser } = useContext(UserContext);
@@ -45,43 +51,39 @@ function LoginPage () {
         try {
             // TODO: Make api request
 
-            const response = {
-                "id": 1,
-                "email": "elikembansah1@gmail.com",
-                "is_student": false,
-                "is_tutor": false,
-                "is_admin": true,
-                "profile_picture": "http://127.0.0.1:8000/media/profile_pictures/None/IMG_2012.JPG"
-            }
+            let loggedInUser = loginStudent(email, password) || loginTutor(email, password) || loginAdmin(email, password);
+            console.log(loggedInUser);
+            if (loggedInUser) {
+                setUser({
+                    id: loggedInUser.id,
+                    email: loggedInUser.email,
+                    role: loggedInUser.is_student ? 'student' : loggedInUser.is_tutor ? 'tutor' : 'admin',
+                    profile_picture: loggedInUser.profile_picture,
+                });
 
-            // Determine user role
-            const role = response.is_student ? 'student' : response.is_tutor ? 'tutor' : 'admin';
+                // Reset email and password
+                setEmail('');
+                setPassword('');
 
-            setUser({
-                "id": response.id,
-                "email": response.email,
-                "role": role,
-                "profile_picture": response.profile_picture
-            });
+                // Set the password visibility
+                setShowPassword(false);
+                console.log(loggedInUser);
 
-            // reset email
-            setEmail('');
-            setPassword('');
-
-            // Set the password
-            setShowPassword(false);
-
-            // Navigate back to home page
-            switch (role) {
-                case 'student':
-                    navigate('/');
-                    break;
-                case 'tutor':
-                    navigate('/');
-                    break;
-                case 'admin':
-                    navigate('/admin-dashboard');
-                    break;
+                // Navigate based on the role
+                switch (loggedInUser.role) {
+                    case 'student':
+                        navigate('/');
+                        break;
+                    case 'tutor':
+                        navigate('/');
+                        break;
+                    case 'admin':
+                        console.log("route to admin");
+                        navigate('/admin-dashboard');
+                        break;
+                }
+            } else {
+                alert('Invalid email or password. Please try again.');
             }
 
         } catch (error) {

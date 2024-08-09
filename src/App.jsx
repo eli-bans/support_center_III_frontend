@@ -17,16 +17,28 @@ import ForgetPasswordPage from './pages/ForgetPasswordPage';
 import FindTutorPage from './pages/FindTutorPage';
 import TutorDashboard from './pages/tutor/TutorDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import { StudentProvider } from './contexts/StudentContext';
+import { TutorProvider } from './contexts/TutorContext';
+import { AdminProvider } from './contexts/AdminContext';
+import RedirectOnLoad from './routes/RedirectOnLoad';
+import RouteTracker from './routes/RouteTracker';
 
 function App() {
 
   return (
     <>
+      <AdminProvider>
+      <TutorProvider>
+      <StudentProvider >
       <UserProvider>
         <Router>
           <AppContent />
         </Router>
       </UserProvider>
+      </StudentProvider>
+      </TutorProvider>
+      </AdminProvider>
+
     </>
   )
 }
@@ -37,6 +49,8 @@ function AppContent(){
   return(
     <div className="view-container">
       <div className="main-view">
+        <RedirectOnLoad />
+        <RouteTracker />
         {/* <Navbar /> */}
         {location.pathname !== '/admin-dashboard' && <Navbar />}
         <Routes>
