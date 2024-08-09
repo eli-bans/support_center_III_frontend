@@ -1,5 +1,7 @@
 // import react libraries
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import { StudentContext } from '../../contexts/StudentContext';
+import { TutorContext } from '../../contexts/TutorContext';
 
 // import styles
 import StatsBox from '../../components/admin_components/StatsBox';
@@ -7,15 +9,21 @@ import '../../styles/AdminDashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AddTutorModal from '../../components/admin_components/AddTutorModal';
 
-const users = [
-    {"firstname":null, "lastname": null, "email": "palalasare@gmail", "class":2025, "role":"student"},
-    {"firstname":"Palal", "lastname": "Asare", "email": "palalasare@gmail", "class":2025, "role":"tutor"}
-]
+// const users = [
+//     {"firstname":null, "lastname": null, "email": "palalasare@gmail", "class":2025, "role":"student"},
+//     {"firstname":"Palal", "lastname": "Asare", "email": "palalasare@gmail", "class":2025, "role":"tutor"}
+// ]
 
 function AdminDashboard () {
 
+    const { students } = useContext(StudentContext);
+    const { tutors } = useContext(TutorContext);
+
     const [isOnDashboard, setIsOnDasbhard] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Combine students and tutors into one array
+    const allUsers = [...students, ...tutors];
 
     // handel tab switch 
     const handleTabSwitch = () => {
@@ -56,7 +64,7 @@ function AdminDashboard () {
                     {isOnDashboard ? (
                         <DashboardStats />
                     ): (
-                        <UsersAvailable handleToggle={toggleModal}/>
+                        <UsersAvailable handleToggle={toggleModal} users={allUsers}/>
                     )
                     }
                     
@@ -65,13 +73,13 @@ function AdminDashboard () {
             <AddTutorModal 
                 show={isModalOpen}
                 onClose={toggleModal}
-                students={users}
+                studentUsers={students}
             />
         </div>
     )
 }
 
-function UsersAvailable ({handleToggle}) {
+function UsersAvailable ({handleToggle, users}) {
 
 
     return (
@@ -86,18 +94,16 @@ function UsersAvailable ({handleToggle}) {
                 <h2 className='container-title'>Users</h2>
                 <div className="container-table">
                     <div className='container-table-header'>
-                        <p>NAME</p>
                         <p>EMAIL</p>
                         <p>CLASS</p>
                         <p>ROLE</p>
                     </div>
                     <div className="container-content">
-                        {users.map((user, index) => (
-                            <div className="container-row" key={index}>
-                                <p>{user.firstname ? user.firstname : "no-name"} {user.lastname ? user.lastname : ""}</p>
+                        {users.map((user, _) => (
+                            <div className="container-row" key={user.id}>
                                 <p>{user.email}</p>
-                                <p>{user.class}</p>
-                                <p>{user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
+                                <p>{user.class || "N/A"}</p>
+                                <p>{user.is_tutor ? "Tutor" : "Student"}</p>
                             </div>
                         ))}
                     </div>

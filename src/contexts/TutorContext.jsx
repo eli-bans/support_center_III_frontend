@@ -75,7 +75,7 @@ export const TutorProvider = ({ children }) => {
     };
 
     return (
-        <TutorContext.Provider value={{ tutors, loginTutor }}>
+        <TutorContext.Provider value={{ tutors, loginTutor, setTutors }}>
             {children}
         </TutorContext.Provider>
     );

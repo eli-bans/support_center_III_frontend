@@ -13,13 +13,6 @@ import BookingModal from '../components/find_tutor/BookingModal';
 import Payment from '../components/payment/Payment';
 import { TutorContext } from '../contexts/TutorContext';
 
-// Tutor call structure
-// const tutors = [
-//     { id: 1, email:"pinopalal11@gmail.com", firstname: "Palal", lastname: "Asare", courses: ["Chemistry", "Data Structures & Algorithms"], image_path: ProfileImage, stars: 5, year: 2025, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
-//     { id: 2, email:"pinopalal11@gmail.com", firstname: "Jane", lastname: "Doe", courses: ["Mathematics", "Physics"], image_path: ProfileImage, stars: 4, year: 2023, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
-//     { id: 3, email:"pinopalal11@gmail.com", firstname: "John", lastname: "Smith", courses: ["English", "History"], image_path: ProfileImage, stars: 5, year: 2024, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
-// ];
-
 function FindTutorPage () {
     const { tutors } = useContext(TutorContext);
     const [filters, setFilters] = useState({ subject: '', year: '' });
