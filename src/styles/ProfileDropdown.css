@@ -1,0 +1,24 @@
+
+.profile-container {
+    position: absolute;
+    bottom: -80px;
+    left: -30px;
+    font-size: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    border: 1px rgba(128, 128, 128, 0.553) solid;
+    z-index: 1100;
+    background-color: rgb(249, 244, 238);
+}
+
+.profile-container p:hover {
+    cursor: pointer;
+}
+
+.profile-container .logout {
+    color: red;
+}

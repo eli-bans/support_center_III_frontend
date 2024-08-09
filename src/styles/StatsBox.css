@@ -1,0 +1,32 @@
+.stats-box{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    background-color: white;
+    padding: 10px;
+
+    border: 1px rgba(49, 48, 48, 0.142) solid;
+    border-radius: 15px;
+    width: 220px;
+}
+
+.stats-box .box-icon {
+    color: #4318FF;
+    font-size: 20px;
+}
+
+.stats-box .box-info {
+    flex: 1;
+}
+
+.stats-box h3{
+    font-size: 13px;
+    color: rgb(66, 65, 65);
+    font-weight: normal;
+}
+
+.stats-box p {
+    color: rgb(4, 4, 88);
+    font-weight: bold;
+    font-size: 24px;
+}
