@@ -1,6 +1,8 @@
 // Import external libraries
 import {BrowserRouter as Router, Route, Routes, useLocation} from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
+import RedirectOnLoad from './routes/RedirectOnLoad';
+import RouteTracker from './routes/RoutesTracker';
 
 // Import providers
 import { UserProvider } from './contexts/UserContext';
@@ -36,6 +38,8 @@ function AppContent(){
   
   return(
     <div className="view-container">
+      <RedirectOnLoad />  {/* RedirectOnLoad here */}
+      <RouteTracker />    {/* RouteTracker here */}
       <div className="main-view">
         {/* <Navbar /> */}
         {location.pathname !== '/admin-dashboard' && <Navbar />}

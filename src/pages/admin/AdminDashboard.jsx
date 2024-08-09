@@ -1,5 +1,7 @@
 // import react libraries
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import { UserContext } from '../../contexts/UserContext';
+import {useNavigate} from 'react-router-dom';
 
 // import styles
 import StatsBox from '../../components/admin_components/StatsBox';
@@ -16,8 +18,10 @@ function AdminDashboard () {
 
     const [isOnDashboard, setIsOnDasbhard] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { setUser } = useContext(UserContext);
+    const navigate = useNavigate();
 
-    // handel tab switch 
+    // handle tab switch 
     const handleTabSwitch = () => {
         setIsOnDasbhard(!isOnDashboard);
     }
@@ -26,6 +30,13 @@ function AdminDashboard () {
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
+
+    // handle logout
+    const handleLogout = () => {
+        setUser(null);
+        localStorage.removeItem('lastPath');
+        navigate('/');
+    }
 
     return (
         <div className="admin-dashboard">
@@ -41,7 +52,7 @@ function AdminDashboard () {
                         <p>Users</p>
                     </div>
                 </div>
-                <div className="logout">
+                <div className="logout" onClick={handleLogout}>
                     <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" />
                     <p>Logout</p>
                 </div>
