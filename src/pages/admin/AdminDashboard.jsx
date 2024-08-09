@@ -2,6 +2,7 @@
 import React, {useState, useContext} from 'react';
 import { StudentContext } from '../../contexts/StudentContext';
 import { TutorContext } from '../../contexts/TutorContext';
+import { UserContext } from '../../contexts/UserContext';
 
 // import styles
 import StatsBox from '../../components/admin_components/StatsBox';
@@ -18,12 +19,18 @@ function AdminDashboard () {
 
     const { students } = useContext(StudentContext);
     const { tutors } = useContext(TutorContext);
+    const { user, setUser } = useContext(UserContext);
 
     const [isOnDashboard, setIsOnDasbhard] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Combine students and tutors into one array
     const allUsers = [...students, ...tutors];
+
+    // dashboard stats
+    const totalUsers = allUsers.length;
+    const totalStudents = students.length;
+    const totalTutors = tutors.length;
 
     // handel tab switch 
     const handleTabSwitch = () => {
@@ -34,6 +41,13 @@ function AdminDashboard () {
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
+
+    // handle logout
+    const handleLogout = () => {
+        setUser(null);
+        localStorage.removeItem('lastPath');
+        navigate('/');
+    }
 
     return (
         <div className="admin-dashboard">
@@ -49,7 +63,7 @@ function AdminDashboard () {
                         <p>Users</p>
                     </div>
                 </div>
-                <div className="logout">
+                <div className="logout" onClick={handleLogout}>
                     <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" />
                     <p>Logout</p>
                 </div>
@@ -62,7 +76,11 @@ function AdminDashboard () {
                     </div>
 
                     {isOnDashboard ? (
-                        <DashboardStats />
+                        <DashboardStats 
+                            totalStudents={totalStudents}
+                            totalTutors={totalTutors}
+                            totalUsers={totalUsers}
+                        />
                     ): (
                         <UsersAvailable handleToggle={toggleModal} users={allUsers}/>
                     )
@@ -114,15 +132,15 @@ function UsersAvailable ({handleToggle, users}) {
     )
 }
 
-function DashboardStats () {
+function DashboardStats ({totalUsers, totalStudents, totalTutors}) {
     return(
         <div className="details">
             <h1>User Statistics</h1>
             <div className="stats">
-                <StatsBox statName={"Total Users"} statNumber={376}/>
-                <StatsBox statName={"Total Users"} statNumber={376}/>
-                <StatsBox statName={"Total Users"} statNumber={376}/>
-                <StatsBox statName={"Total Users"} statNumber={376}/>
+                <StatsBox statName={"Total Users"} statNumber={totalUsers}/>
+                <StatsBox statName={"Total Students"} statNumber={totalStudents}/>
+                <StatsBox statName={"Total Tutors"} statNumber={totalTutors}/>
+                <StatsBox statName={"Total Tutors"} statNumber={totalTutors}/>
             </div>
         </div>
     )
