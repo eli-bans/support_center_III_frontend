@@ -1,13 +1,16 @@
 import React, { createContext, useState } from 'react';
+import defaultProfilePic from '../assets/default_image.png';
+import palalProfilePic from '../assets/palal-profile.jfif';
+import jesseProfilePic from '../assets/jesse-profile.jfif';
 
 export const TutorContext = createContext();
 
 const initialTutors = [
     {
         id: 1,
-        firstname: 'Main',
-        lastname: 'Tutor',
-        email: 'maintutor@gmail.com',
+        firstname: 'Palal',
+        lastname: 'Asare',
+        email: 'mainpalal@gmail.com',
         password: 'P@$$w0rd',
         is_student: false,
         is_tutor: true,
@@ -15,14 +18,14 @@ const initialTutors = [
         year: 2025,
         calendly_link: 'https://calendly.com/palalasare/30min',
         rating: 4.5,
-        profile_picture: null,
+        profile_picture: palalProfilePic,
         about: "I like to help students pass and never fail. I am also a big fun of foo",
     },
     {
         id: 2,
         firstname: 'Jesse',
         lastname: 'Adjetey',
-        email: 'maintutor1@gmail.com',
+        email: 'jesseadjetey@gmail.com',
         password: 'P@$$w0rd',
         is_student: false,
         is_tutor: true,
@@ -30,20 +33,20 @@ const initialTutors = [
         year: 2026,
         calendly_link: 'https://calendly.com/palalasare/30min',
         rating: 4.8,
-        profile_picture: null,
-        about: null,
+        profile_picture: jesseProfilePic,
+        about: "I am Jesse Adjetey and I am available to help you whenever",
     },
     {
         id: 3,
-        firstname: 'Emily',
-        lastname: 'Johnson',
-        email: 'maintutor3@gmail.com',
+        firstname: 'Alvin',
+        lastname: 'Brocke',
+        email: 'alvinbrocke@gmail.com',
         password: 'P@$$w0rd',
         is_student: false,
         is_tutor: true,
         courses: ['AI', 'WT'],
         year: 2027,
-        calendly_link: 'https://calendly.com/palalasare/30min',
+        calendly_link: 'https://calendly.com/alvinbrocke/30min',
         rating: 4.7,
         profile_picture: null,
         about: null,

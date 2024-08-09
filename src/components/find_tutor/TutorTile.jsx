@@ -1,7 +1,6 @@
 // import styles and images
 import '../../styles/TutorTile.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import DefaultImage from "../../assets/default_image.png";
 
 function TutorTile ({
     firstname, lastname, 
@@ -13,7 +12,7 @@ function TutorTile ({
         <div className="list-item">
 
             <div className="graphic">
-                <img className='image-profile' src={image_path ? image_path : DefaultImage} alt="Image of profile" />
+                <img className='image-profile' src={image_path} alt="Image of profile" />
             </div>
 
             <div className="details">

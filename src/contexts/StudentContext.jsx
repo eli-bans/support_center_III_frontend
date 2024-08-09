@@ -1,4 +1,7 @@
 import React, { createContext, useState } from 'react';
+import jesseProfilePic from '../../assets/jesse-profile.jfif';
+import defaultProfilePic from '../../assets/default_image.png';
+import palalProfilePic from '../../assets/palal-profile.jfif';
 
 export const StudentContext = createContext();
 
@@ -9,7 +12,7 @@ const initialStudents = [
         password: 'P@$$w0rd',
         is_student: true,
         is_tutor: false,
-        profile_picture: null,
+        profile_picture: palalProfilePic,
     },
     {
         id: 2,
@@ -17,7 +20,7 @@ const initialStudents = [
         password: 'P@$$w0rd',
         is_student: true,
         is_tutor: false,
-        profile_picture: null,
+        profile_picture: defaultProfilePic,
     },
     {
         id: 3,
@@ -25,7 +28,7 @@ const initialStudents = [
         password: 'P@$$w0rd',
         is_student: true,
         is_tutor: false,
-        profile_picture: null,
+        profile_picture: defaultProfilePic,
     },
     {
         id: 4,
