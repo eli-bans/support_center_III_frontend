@@ -1,10 +1,10 @@
 .admin-dashboard {
     width: 100vw;
     margin-left: calc((100% - 100vw) / 2);
-    height: 100vh;
+    height: 100%;
     display: grid;
     grid-template-columns: 25% 75%;
-    overflow-y: hidden;
+    overflow-y: scroll;
     position: relative;
 }
 
@@ -131,7 +131,7 @@
 
 .container-table-header{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     font-size: 12px;
     margin-bottom: 10px;
     border-bottom: 1px solid rgba(102, 101, 101, 0.333);
@@ -146,7 +146,7 @@
 
 .container-row {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     font-size: 12px;
     font-weight: bold;
     color: #2B3674;

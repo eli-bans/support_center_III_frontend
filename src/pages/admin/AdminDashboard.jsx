@@ -119,7 +119,6 @@ function UsersAvailable ({handleToggle, users}) {
                 <h2 className='container-title'>Users</h2>
                 <div className="container-table">
                     <div className='container-table-header'>
-                        <p>NAME</p>
                         <p>EMAIL</p>
                         <p>CLASS</p>
                         <p>ROLE</p>
@@ -127,7 +126,6 @@ function UsersAvailable ({handleToggle, users}) {
                     <div className="container-content">
                         {users.map((user, index) => (
                             <div className="container-row" key={index}>
-                                <p>{user.firstname ? user.firstname : "no-name"} {user.lastname ? user.lastname : ""}</p>
                                 <p>{user.email}</p>
                                 <p>{user.class ? user.class : "N/A"}</p>
                                 <p>{user.is_tutor ? 'Tutor' : user.is_student ? 'Student' : 'Admin'}</p>

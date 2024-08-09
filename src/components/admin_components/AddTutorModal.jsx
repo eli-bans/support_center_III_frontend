@@ -15,8 +15,8 @@ const AddTutorModal = ({ show, onClose, students, apiEndpoint }) => {
     setSearchTerm(value);
 
     const filtered = students.filter(student =>
-      student.firstname?.toLowerCase().includes(value) ||
-      student.lastname?.toLowerCase().includes(value) ||
+      // student.firstname?.toLowerCase().includes(value) ||
+      // student.lastname?.toLowerCase().includes(value) ||
       student.email?.toLowerCase().includes(value)
     );
     setFilteredStudents(filtered);
@@ -24,7 +24,8 @@ const AddTutorModal = ({ show, onClose, students, apiEndpoint }) => {
 
   const handleStudentSelect = (student) => {
     setSelectedStudent(student);
-    setSearchTerm(`${student.firstname} ${student.lastname}`);
+    // setSearchTerm(`${student.firstname} ${student.lastname}`);
+    setSearchTerm(`${student.email}`);
     setFilteredStudents([]);
   };
 
@@ -45,14 +46,21 @@ const AddTutorModal = ({ show, onClose, students, apiEndpoint }) => {
     };
 
     try {
-            //TODO: hit api
-            const response = await fetch("http://127.0.0.1:8000/api/tutors/create/", {
-                method: 'POST',
+        //TODO: hit api
+        const token = localStorage.getItem('accessToken');
+        console.log(token);
+
+        const response = await fetch("http://127.0.0.1:8000/api/tutors/create/", {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`, // Include the authorization token
             },
-                body: JSON.stringify(payload),
-            });
+            body: JSON.stringify(payload),
+        });
+
+        console.log(response.body);
+
 
             if (response.ok) {
                 alert('Tutor added successfully!');
