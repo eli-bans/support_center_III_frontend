@@ -1,7 +1,8 @@
 // External packages
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, {useState, useContext} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
+import { StudentContext } from '../contexts/StudentContext';
 
 // styling and image imports
 import '../styles/RegisterPage.css';
@@ -9,10 +10,14 @@ import BlackMeeting from '../assets/black-meeting.png';
 import Footer from '../components/Footer';
 
 function RegisterPage () {
+    const { students, setStudents } = useContext(StudentContext);
+    const navigate = useNavigate();
+
     
     // Hide and show passwords
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    
 
     // States for email and password values
     const [email, setEmail] = useState('');
@@ -44,7 +49,21 @@ function RegisterPage () {
         }
 
         try {
-            // TODO: Make api request
+            // Create a new student object
+            const newStudent = {
+                id: students.length + 1,
+                email,
+                password,
+                is_student: true,
+                is_tutor: false,
+                profile_picture: null,
+            };
+
+            // Add the new student to the StudentContext
+            setStudents([...students, newStudent]);
+
+            //navigate to login page
+            navigate('/login');
 
             // reset email
             setEmail('');
