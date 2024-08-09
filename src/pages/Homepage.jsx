@@ -20,10 +20,24 @@ import TestimonyCard from "../components/homepage/TestimonyCard";
 import FourthTopLeft from "../assets/Cone_07.png";
 import ChatIcon from "../assets/chat-round.png";
 import Footer from '../components/Footer';
+import {Link, useNavigate} from 'react-router-dom';
+import React, {useContext} from 'react';
+import { UserContext } from "../contexts/UserContext";
 
 
 
 function Homepage () {
+    const navigate = useNavigate();
+    const {user, setUser} = useContext(UserContext);
+
+    // Route to tutor page
+    const routeToTutorPage = () => {
+        if(user == null){
+            navigate('/login');
+        } else {
+            navigate('/find-tutor');
+        }
+    }
 
     return (
         
@@ -37,7 +51,7 @@ function Homepage () {
                     <div className="sub-text">Stuck on a coding problem? We get it. <br /> 
                     Support Center is your community to unravel CS <br /> challenges and level up your coding skills</div>
                     <div className="button">
-                        <button>
+                        <button onClick={routeToTutorPage}>
                             <div>Get started now</div>
                             <i class="material-icons">arrow_forward</i>
                         </button>
@@ -91,7 +105,7 @@ function Homepage () {
                                 <ServiceCard count={1} title={"Easy Booking"} desc={"With lots of unique blocks, you can easily build a page without coding."}/>
                                 <ServiceCard count={2} title={"Free Tutor"} desc={"With lots of unique blocks, you can easily build a page without coding."}/>
                                 <ServiceCard count={3} title={"Video Conference"} desc={"With lots of unique blocks, you can easily build a page without coding."}/>
-                                <button className="tutor-button">
+                                <button className="tutor-button" onClick={routeToTutorPage}>
                                     <div className="btn-text">
                                         Find a Tutor
                                     </div>
