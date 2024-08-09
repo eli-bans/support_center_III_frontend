@@ -145,7 +145,7 @@ function FindTutorPage () {
                                     firstname={tutor.firstname}
                                     lastname={tutor.lastname}
                                     courses={tutor.courses}
-                                    image_path={tutor.image_path}
+                                    image_path={tutor.profile_picture}
                                     stars={tutor.rating}
                                     year={tutor.year}
                                     onViewProfile={() => openModal(tutor)}

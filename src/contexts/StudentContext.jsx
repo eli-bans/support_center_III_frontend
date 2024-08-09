@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
-import jesseProfilePic from '../../assets/jesse-profile.jfif';
-import defaultProfilePic from '../../assets/default_image.png';
-import palalProfilePic from '../../assets/palal-profile.jfif';
+import PalalProfile from '../assets/palal-profile.jfif';
+import JesseProfile from '../assets/jesse-profile.jfif';
+import DefaultImage from '../assets/default_image.png';
 
 export const StudentContext = createContext();
 
@@ -12,7 +12,7 @@ const initialStudents = [
         password: 'P@$$w0rd',
         is_student: true,
         is_tutor: false,
-        profile_picture: palalProfilePic,
+        profile_picture: PalalProfile,
     },
     {
         id: 2,
@@ -20,7 +20,7 @@ const initialStudents = [
         password: 'P@$$w0rd',
         is_student: true,
         is_tutor: false,
-        profile_picture: defaultProfilePic,
+        profile_picture: "https://media.licdn.com/dms/image/C4D03AQE8069RrctjJA/profile-displayphoto-shrink_800_800/0/1654645201490?e=1728518400&v=beta&t=3-7ApBACbhc6L55_eCSrsHbWe-o3pLBYOHEkDRLMpm0",
     },
     {
         id: 3,
@@ -28,7 +28,7 @@ const initialStudents = [
         password: 'P@$$w0rd',
         is_student: true,
         is_tutor: false,
-        profile_picture: defaultProfilePic,
+        profile_picture: "https://media.licdn.com/dms/image/C4D03AQE8069RrctjJA/profile-displayphoto-shrink_800_800/0/1654645201490?e=1728518400&v=beta&t=3-7ApBACbhc6L55_eCSrsHbWe-o3pLBYOHEkDRLMpm0",
     },
     {
         id: 4,
@@ -36,7 +36,7 @@ const initialStudents = [
         password: 'P@$$w0rd',
         is_student: true,
         is_tutor: false,
-        profile_picture: null,
+        profile_picture: DefaultImage,
     },
     {
         id: 5,
@@ -44,7 +44,7 @@ const initialStudents = [
         password: 'P@$$w0rd',
         is_student: true,
         is_tutor: false,
-        profile_picture: null,
+        profile_picture: JesseProfile,
     },
 ];
 

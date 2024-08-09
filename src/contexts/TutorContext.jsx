@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
-import defaultProfilePic from '../assets/default_image.png';
-import palalProfilePic from '../assets/palal-profile.jfif';
-import jesseProfilePic from '../assets/jesse-profile.jfif';
+import PalalProfile from '../assets/palal-profile.jfif'
+import JesseProfile from '../assets/jesse-profile.jfif';
+import DefaultImage from '../assets/default_image.png';
 
 export const TutorContext = createContext();
 
@@ -18,7 +18,7 @@ const initialTutors = [
         year: 2025,
         calendly_link: 'https://calendly.com/palalasare/30min',
         rating: 4.5,
-        profile_picture: palalProfilePic,
+        profile_picture: PalalProfile,
         about: "I like to help students pass and never fail. I am also a big fun of foo",
     },
     {
@@ -33,7 +33,7 @@ const initialTutors = [
         year: 2026,
         calendly_link: 'https://calendly.com/palalasare/30min',
         rating: 4.8,
-        profile_picture: jesseProfilePic,
+        profile_picture: JesseProfile,
         about: "I am Jesse Adjetey and I am available to help you whenever",
     },
     {
@@ -48,7 +48,7 @@ const initialTutors = [
         year: 2027,
         calendly_link: 'https://calendly.com/alvinbrocke/30min',
         rating: 4.7,
-        profile_picture: null,
+        profile_picture: DefaultImage,
         about: null,
     },
     {
@@ -63,7 +63,7 @@ const initialTutors = [
         year: 2025,
         calendly_link: 'https://calendly.com/palalasare/30min',
         rating: 4.6,
-        profile_picture: null,
+        profile_picture: DefaultImage,
         about: null,
     },
 ];

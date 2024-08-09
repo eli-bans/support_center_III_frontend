@@ -42,6 +42,9 @@ function Modal ({isOpen, onClose, user}) {
             // container: document.getElementById('zego-container'),
             scenario: {
                 mode: ZegoUIKitPrebuilt.GroupCall,
+                config: {
+                    maxParticipants: 50
+                }
             },
         });
     };
