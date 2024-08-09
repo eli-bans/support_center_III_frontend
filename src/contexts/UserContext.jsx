@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
   });
 
   useEffect(() => {
+    console.log('User context updated:', user);
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
     } else {

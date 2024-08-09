@@ -48,9 +48,9 @@ function AppContent(){
   
   return(
     <div className="view-container">
+      <RedirectOnLoad />
+      <RouteTracker />
       <div className="main-view">
-        <RedirectOnLoad />
-        <RouteTracker />
         {/* <Navbar /> */}
         {location.pathname !== '/admin-dashboard' && <Navbar />}
         <Routes>

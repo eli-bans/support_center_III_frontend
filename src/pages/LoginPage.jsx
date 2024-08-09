@@ -20,7 +20,7 @@ function LoginPage () {
     const { loginAdmin } = useContext(AdminContext);
 
     // user states
-    const { setUser } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
     
     // Hide and show password
@@ -49,15 +49,25 @@ function LoginPage () {
         }
 
         try {
-            // TODO: Make api request
 
             let loggedInUser = loginStudent(email, password) || loginTutor(email, password) || loginAdmin(email, password);
-            console.log(loggedInUser);
+
             if (loggedInUser) {
+                // Update the role assignment logic to explicitly handle the admin case
+                let userRole;
+                if (loggedInUser.is_student) {
+                    userRole = 'student';
+                } else if (loggedInUser.is_tutor) {
+                    userRole = 'tutor';
+                } else {
+                    userRole = 'admin';  // Explicitly set the role to admin if neither student nor tutor
+                }
+
+                // Set user context
                 setUser({
                     id: loggedInUser.id,
                     email: loggedInUser.email,
-                    role: loggedInUser.is_student ? 'student' : loggedInUser.is_tutor ? 'tutor' : 'admin',
+                    role: userRole,  // Use the userRole variable
                     profile_picture: loggedInUser.profile_picture,
                 });
 
@@ -67,22 +77,19 @@ function LoginPage () {
 
                 // Set the password visibility
                 setShowPassword(false);
-                console.log(loggedInUser);
 
                 // Navigate based on the role
-                switch (loggedInUser.role) {
+                switch (userRole) {
                     case 'student':
-                        console.log('route to student');
-                        navigate('/');
-                        break;
                     case 'tutor':
-                        console.log('route to tutor')
                         navigate('/');
                         break;
                     case 'admin':
-                        console.log("route to admin");
                         navigate('/admin-dashboard');
                         break;
+                    default:
+                        console.error('Unexpected role:', userRole);
+                        alert('Unexpected role. Please contact support.');
                 }
             } else {
                 alert('Invalid email or password. Please try again.');

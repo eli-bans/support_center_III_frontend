@@ -9,6 +9,13 @@ const initialAdmin = [{
     is_student: false,
     is_tutor: false,
     profile_picture: ''
+}, {
+    id: 1,
+    email: 'secondadmin@gmail.com',
+    password: 'P@$$w0rd',
+    is_student: false,
+    is_tutor: false,
+    profile_picture: ''
 }];
 
 export const AdminProvider = ({ children }) => {
