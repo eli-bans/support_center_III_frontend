@@ -8,11 +8,18 @@ import {useNavigate} from 'react-router-dom';
 
 
 function ProfileDropdown ({isOpen}) {
-    const {user} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
 
     const handleDashboardRoute = () => {
         navigate('/tutor-dashboard');
+    }
+
+    // Handle user logout
+    const handleLogout = () => {
+        setUser(null);
+        localStorage.removeItem('lastPath');
+        navigate('/');
     }
 
     if (!isOpen) return null;
@@ -23,7 +30,7 @@ function ProfileDropdown ({isOpen}) {
                 <p onClick={handleDashboardRoute} className='dashboard'>Dashboard</p>
             )}
             <p className='profile'>Profile</p>
-            <p className='logout'>Logout</p>
+            <p className='logout' onClick={handleLogout}>Logout</p>
         </div>
     )
 }

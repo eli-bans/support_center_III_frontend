@@ -48,9 +48,9 @@ function LoginPage () {
             const response = {
                 "id": 1,
                 "email": "elikembansah1@gmail.com",
-                "is_student": false,
+                "is_student": true,
                 "is_tutor": false,
-                "is_admin": true,
+                "is_admin": false,
                 "profile_picture": "http://127.0.0.1:8000/media/profile_pictures/None/IMG_2012.JPG"
             }
 
