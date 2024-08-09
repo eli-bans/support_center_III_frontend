@@ -8,13 +8,16 @@ import { UserContext } from '../contexts/UserContext';
 
 // import image and styling
 import '../styles/Navbar.css'
-import ProfileImage from '../assets/person-image.jfif';
+import DefaultImage from '../assets/default_image.png';
 import ProfileDropdown from './ProfileDropdown';
 
 const Navbar = () => {
   const {user} = useContext(UserContext);
   const navigate = useNavigate();
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
+  // Determine which image to display
+  const userProfileImage = user && user.profile_picture ? user.profile_picture : DefaultImage;
 
   //Routing for protected routes
   const handleProtectedRoute = (path) => {
@@ -52,7 +55,7 @@ const Navbar = () => {
         ) : (
           <>
             <div className='profile-button' onClick={openDropdown}>
-              <img className='profile-img' src={ProfileImage} onClick={openDropdown}  alt='Profile Image'/>
+              <img className='profile-img' src={userProfileImage} onClick={openDropdown}  alt='Profile Image'/>
               <FontAwesomeIcon className='dropdown-icon' icon="fa-solid fa-caret-down" />
               <ProfileDropdown isOpen={isDropDownOpen} />
             </div>

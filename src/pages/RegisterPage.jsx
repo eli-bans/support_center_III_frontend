@@ -8,6 +8,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import '../styles/RegisterPage.css';
 import BlackMeeting from '../assets/black-meeting.png';
 import Footer from '../components/Footer';
+import { SiTrueup } from 'react-icons/si';
 
 function RegisterPage () {
     // Navigate after login
