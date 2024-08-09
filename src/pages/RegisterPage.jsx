@@ -66,7 +66,7 @@ function RegisterPage () {
                 alert(errorMessage);
                 throw new Error('Registration failed');
             }
-            
+
             console.log('Registration successful:', data);
 
             // reset email
@@ -79,10 +79,10 @@ function RegisterPage () {
             setShowConfirmPassword(false);
 
             // Set User details
-            setUser(data);
+            // setUser(data);
 
             //navigate to login page
-            navigate('/');
+            navigate('/login');
 
         } catch (error) {
             console.error('Registration failed:', error);

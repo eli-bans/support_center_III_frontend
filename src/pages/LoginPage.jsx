@@ -50,22 +50,31 @@ function LoginPage () {
                 },
                 body: JSON.stringify({ email, password }),
             });
-
+    
             if (!response.ok) {
-                throw new Error('Registration failed');
+                const errorData = await response.json();
+                const errorMessage = Object.values(errorData).flat().join('\n');
+                alert(errorMessage);
+                return;
             }
-
+    
             const data = await response.json();
-            console.log('Registration successful:', data);
-
+            console.log('Login successful:', data);
+    
+            // Store tokens in localStorage
+            localStorage.setItem('accessToken', data.access);
+            localStorage.setItem('refreshToken', data.refresh);
+    
             // Determine user role
-            const role = data.is_student ? 'student' : data.is_tutor ? 'tutor' : 'admin';
-
+            const role = data.user.is_student ? 'student' : data.user.is_tutor ? 'tutor' : 'admin';
+    
+            // Set UserContext with the user data
             setUser({
-                "id": response.id,
-                "email": response.email,
-                "role": role,
-                "profile_picture": response.profile_picture
+                id: data.user.id,
+                email: data.user.email,
+                role: role,
+                // profile_picture: data.user.profile_picture,
+                profile_picture: null,
             });
 
             // reset email
