@@ -1,5 +1,5 @@
 // import react libraries
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import {useNavigate} from 'react-router-dom';
 
@@ -9,17 +9,39 @@ import '../../styles/AdminDashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AddTutorModal from '../../components/admin_components/AddTutorModal';
 
-const users = [
-    {"firstname":null, "lastname": null, "email": "palalasare@gmail", "class":2025, "role":"student"},
-    {"firstname":"Palal", "lastname": "Asare", "email": "palalasare@gmail", "class":2025, "role":"tutor"}
-]
+// const users = [
+//     {"firstname":null, "lastname": null, "email": "palalasare@gmail", "class":2025, "role":"student"},
+//     {"firstname":"Palal", "lastname": "Asare", "email": "palalasare@gmail", "class":2025, "role":"tutor"}
+// ]
 
 function AdminDashboard () {
-
+    
+    const [users, setUsers] = useState([]);
     const [isOnDashboard, setIsOnDasbhard] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { setUser } = useContext(UserContext);
     const navigate = useNavigate();
+
+    // Fetch users on component build
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
+    //Handle fetch of all users
+    const fetchUsers = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/users/');
+            if (response.status === 200) {
+                const data = await response.json();
+                setUsers(data);
+                console.log('Users fetched successfully!');
+            } else {
+                console.log(`Error fetching users: ${response.status} ${response.statusText}`);
+            }
+        } catch (error) {
+            console.log(`Error fetching users: ${error.message}`);
+        }
+    };
 
     // handle tab switch 
     const handleTabSwitch = () => {
@@ -67,7 +89,7 @@ function AdminDashboard () {
                     {isOnDashboard ? (
                         <DashboardStats />
                     ): (
-                        <UsersAvailable handleToggle={toggleModal}/>
+                        <UsersAvailable handleToggle={toggleModal} users={users}/>
                     )
                     }
                     
@@ -82,7 +104,7 @@ function AdminDashboard () {
     )
 }
 
-function UsersAvailable ({handleToggle}) {
+function UsersAvailable ({handleToggle, users}) {
 
 
     return (
@@ -107,8 +129,8 @@ function UsersAvailable ({handleToggle}) {
                             <div className="container-row" key={index}>
                                 <p>{user.firstname ? user.firstname : "no-name"} {user.lastname ? user.lastname : ""}</p>
                                 <p>{user.email}</p>
-                                <p>{user.class}</p>
-                                <p>{user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
+                                <p>{user.class ? user.class : "N/A"}</p>
+                                <p>{user.is_tutor ? 'Tutor' : user.is_student ? 'Student' : 'Admin'}</p>
                             </div>
                         ))}
                     </div>

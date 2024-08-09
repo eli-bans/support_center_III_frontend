@@ -49,14 +49,17 @@ function RegisterPage () {
         }
 
         try {
-            const role = {'is_student': false};
 
             const response = await fetch('http://127.0.0.1:8000/api/users/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password, role }),
+                body: JSON.stringify({ 
+                    email, 
+                    password, 
+                    is_student:true 
+                }),
             });
 
             const data = await response.json();

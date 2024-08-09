@@ -40,13 +40,13 @@ const AddTutorModal = ({ show, onClose, students, apiEndpoint }) => {
       firstname: firstName,
       lastname: lastName,
       year: selectedYear,
-      calendlyUrl,
+      //calendlyUrl,
       email: selectedStudent.email,
     };
 
     try {
             //TODO: hit api
-            const response = await fetch(apiEndpoint, {
+            const response = await fetch("http://127.0.0.1:8000/api/tutors/create/", {
                 method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
