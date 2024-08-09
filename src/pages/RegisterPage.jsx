@@ -49,7 +49,7 @@ function RegisterPage () {
         }
 
         try {
-            const role = {'is_student': true};
+            const role = {'is_student': false};
 
             const response = await fetch('http://127.0.0.1:8000/api/users/', {
                 method: 'POST',
@@ -59,11 +59,14 @@ function RegisterPage () {
                 body: JSON.stringify({ email, password, role }),
             });
 
+            const data = await response.json();
+
             if (!response.ok) {
+                const errorMessage = Object.values(data).flat().join('\n');
+                alert(errorMessage);
                 throw new Error('Registration failed');
             }
-
-            const data = await response.json();
+            
             console.log('Registration successful:', data);
 
             // reset email
@@ -83,7 +86,6 @@ function RegisterPage () {
 
         } catch (error) {
             console.error('Registration failed:', error);
-            alert('Registration failed. Please try again.');
         }
     };
 
