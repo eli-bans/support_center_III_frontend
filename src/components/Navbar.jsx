@@ -39,7 +39,7 @@ const Navbar = () => {
       <div className="sub-pages">
         <Link to='/' className="home">Home</Link>
         <div className="tutor" onClick={() => handleProtectedRoute('/find-tutor')}>Find a tutor</div>
-        <div className="services">Forum</div>
+        <div className="services" onClick={() => handleProtectedRoute('/forum')}>Forum</div>
         <div className="about">About us</div>
       </div>
       <div className="register-buttons">

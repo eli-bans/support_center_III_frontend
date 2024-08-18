@@ -145,7 +145,7 @@ function LoginPage () {
                             <p className='advice'>Must be at least 8 characters</p>
                             <Link to='/forget-password'><p className='forget-password'>Forgot Password?</p></Link>
                         </div>
-                        <button type='submit'>Sign Up</button>
+                        <button type='submit'>Sign In</button>
                         <p className='existing-account'>Don't have an account? <Link to='/register'><span>Register</span></Link></p>
                     </form>
                 </div>
