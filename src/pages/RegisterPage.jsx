@@ -1,8 +1,9 @@
 // External packages
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, {useState, useContext} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { StudentContext } from '../contexts/StudentContext';
+import { UserContext } from '../contexts/UserContext';
 
 // styling and image imports
 import '../styles/RegisterPage.css';
@@ -11,13 +12,12 @@ import Footer from '../components/Footer';
 
 function RegisterPage () {
     const { students, setStudents } = useContext(StudentContext);
+    const { register } = useContext(UserContext);
     const navigate = useNavigate();
 
-    
     // Hide and show passwords
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    
 
     // States for email and password values
     const [email, setEmail] = useState('');
@@ -49,34 +49,28 @@ function RegisterPage () {
         }
 
         try {
-            // Create a new student object
-            const newStudent = {
-                id: students.length + 1,
-                email,
-                password,
-                is_student: true,
-                is_tutor: false,
-                profile_picture: null,
-            };
+            // Api request for register
+            const { isSuccess, errorMessage } = await register(email, password);
 
-            // Add the new student to the StudentContext
-            setStudents([...students, newStudent]);
+            if(isSuccess) {
+                // reset email
+                setEmail('');
+                setPassword('');
+                setConfirmPassword('');
 
-            //navigate to login page
-            navigate('/login');
+                // Set the password
+                setShowPassword(false);
+                setShowConfirmPassword(false);
 
-            // reset email
-            setEmail('');
-            setPassword('');
-            setConfirmPassword('');
-
-            // Set the password
-            setShowPassword(false);
-            setShowConfirmPassword(false);
+                //navigate to login page
+                navigate('/login');
+            } else {
+                // show error as alert
+                alert(errorMessage);
+            }
 
         } catch (error) {
-            console.error('Registration failed:', error);
-            alert('Registration failed. Please try again.');
+            console.error('Unknown registration error:', error);
         }
     };
 

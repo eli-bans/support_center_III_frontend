@@ -47,6 +47,7 @@ export const UserProvider = ({ children }) => {
     try {
       
       await axios.post('http://127.0.0.1:8000/api/users/', {email, password, is_student, is_tutor});
+      return {isSuccess: true, errorMessage: null};
       
     } catch (error) {
       
@@ -55,15 +56,18 @@ export const UserProvider = ({ children }) => {
       if(error.response) {
         // get status code
         const statusCode = error.response.status;
+        var errorMessage = null;
 
         if( statusCode == 400) {
-          setError("Bad Request. Please check your input.");
+          errorMessage = "Bad Request. Please check your input.";
         } else if (statusCode == 500 ) {
-          setError("Server Error. Please try again later.");
+          errorMessage = "Server Error. Please try again later.";
         } else {
-          setError('An unexpected error occurred. Please try again.');
+          errorMessage = 'An unexpected error occurred. Please try again.';
         }
       }
+
+      return {isSuccess: false, errorMessage: errorMessage};
     }
   };
 
