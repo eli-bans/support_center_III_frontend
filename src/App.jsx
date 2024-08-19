@@ -28,17 +28,17 @@ function App() {
 
   return (
     <>
+      <UserProvider>
       <AdminProvider>
       <TutorProvider>
       <StudentProvider >
-      <UserProvider>
         <Router>
           <AppContent />
         </Router>
-      </UserProvider>
       </StudentProvider>
       </TutorProvider>
       </AdminProvider>
+      </UserProvider>
 
     </>
   )
