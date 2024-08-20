@@ -50,7 +50,6 @@ function LoginPage () {
             if (isSuccess) {
 
                 if(user) {
-                    console.log("user is not empty");
 
                     let userRole;
                     if(user.is_student) {

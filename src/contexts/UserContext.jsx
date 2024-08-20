@@ -89,7 +89,7 @@ export const UserProvider = ({ children }) => {
       
       if (error.response) {
         // get status code
-        const statusCode = error.response.statusCode;
+        const statusCode = error.response.status;
 
         var errorMessage = null;
 
