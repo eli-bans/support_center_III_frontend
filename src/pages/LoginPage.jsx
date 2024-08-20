@@ -5,9 +5,6 @@ import {Link, useNavigate} from 'react-router-dom';
 
 // Import contexts
 import { UserContext } from '../contexts/UserContext';
-import { StudentContext } from '../contexts/StudentContext';
-import { TutorContext } from '../contexts/TutorContext';
-import { AdminContext } from '../contexts/AdminContext';
 
 // styling and image imports
 import '../styles/LoginPage.css';
@@ -15,12 +12,9 @@ import Footer from '../components/Footer';
 import TwoBlackMen from '../assets/two-black-men.png';
 
 function LoginPage () {
-    const { loginStudent } = useContext(StudentContext);
-    const { loginTutor } = useContext(TutorContext);
-    const { loginAdmin } = useContext(AdminContext);
 
     // user states
-    const { user, setUser } = useContext(UserContext);
+    const { login } = useContext(UserContext);
     const navigate = useNavigate();
     
     // Hide and show password
@@ -50,49 +44,49 @@ function LoginPage () {
 
         try {
 
-            let loggedInUser = loginStudent(email, password) || loginTutor(email, password) || loginAdmin(email, password);
+            // Log user in
+            const {isSuccess, errorMessage, user} = await login(email, password);
 
-            if (loggedInUser) {
-                // Update the role assignment logic to explicitly handle the admin case
-                let userRole;
-                if (loggedInUser.is_student) {
-                    userRole = 'student';
-                } else if (loggedInUser.is_tutor) {
-                    userRole = 'tutor';
+            if (isSuccess) {
+
+                if(user) {
+                    console.log("user is not empty");
+
+                    let userRole;
+                    if(user.is_student) {
+                        userRole = 'student';
+                    } else if (user.is_tutor) {
+                        userRole = 'tutor';
+                    } else {
+                        userRole = 'admin';
+                    }
+
+                    // Reset email and password
+                    setEmail('');
+                    setPassword('');
+
+                    // Set the password visibility
+                    setShowPassword(false);
+
+                    // Navigate based on the role
+                    switch (userRole) {
+                        case 'student':
+                        case 'tutor':
+                            navigate('/');
+                            break;
+                        case 'admin':
+                            navigate('/admin-dashboard');
+                            break;
+                        default:
+                            console.error('Unexpected role:', userRole);
+                            alert('Unexpected role. Please contact support.');
+                    }
+
                 } else {
-                    userRole = 'admin';  // Explicitly set the role to admin if neither student nor tutor
-                }
-
-                // Set user context
-                setUser({
-                    id: loggedInUser.id,
-                    email: loggedInUser.email,
-                    role: userRole,  // Use the userRole variable
-                    profile_picture: loggedInUser.profile_picture,
-                });
-
-                // Reset email and password
-                setEmail('');
-                setPassword('');
-
-                // Set the password visibility
-                setShowPassword(false);
-
-                // Navigate based on the role
-                switch (userRole) {
-                    case 'student':
-                    case 'tutor':
-                        navigate('/');
-                        break;
-                    case 'admin':
-                        navigate('/admin-dashboard');
-                        break;
-                    default:
-                        console.error('Unexpected role:', userRole);
-                        alert('Unexpected role. Please contact support.');
+                    console.log("user is empty: not initialised in time");
                 }
             } else {
-                alert('Invalid email or password. Please try again.');
+                alert(errorMessage);
             }
 
         } catch (error) {

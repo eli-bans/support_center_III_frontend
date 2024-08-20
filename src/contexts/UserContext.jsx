@@ -77,12 +77,13 @@ export const UserProvider = ({ children }) => {
     try {
       
       const response = await axios.post('http://127.0.0.1:8000/api/login/', {email, password});
-      const {user, accessToken, refreshToken} = response.data;
+      const {user, access, refresh} = response.data;
 
       setUser(user);
-      setAccessToken(accessToken);
-      setRefreshToken(refreshToken);
-      setError(null);
+      setAccessToken(access);
+      setRefreshToken(refresh);
+
+      return {isSuccess: true, errorMessage: null, user: user};
 
     } catch (error) {
       
@@ -90,16 +91,20 @@ export const UserProvider = ({ children }) => {
         // get status code
         const statusCode = error.response.statusCode;
 
+        var errorMessage = null;
+
         if (statusCode == 401) {
-          setError("Invalid Credentials. Try again.");
+          errorMessage = "Invalid Credentials. Try again.";
         } else if (statusCode == 500) {
-          setError("Server Error. Try again Later.");
+          errorMessage = "Server Error. Try again Later.";
         } else {
-          setError("Failed to login. Try again.");
+          errorMessage = "Failed to login. Try again.";
         }
       } else {
-        setError("Unexpected Error. Try again.");
+        errorMessage = "Unexpected Error. Try again.";
       }
+
+      return {isSuccess: false, errorMessage: errorMessage, user: null};
     }
   }
 
