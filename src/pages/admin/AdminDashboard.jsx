@@ -1,5 +1,8 @@
 // import react libraries
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import { StudentContext } from '../../contexts/StudentContext';
+import { TutorContext } from '../../contexts/TutorContext';
+import { UserContext } from '../../contexts/UserContext';
 
 // import styles
 import StatsBox from '../../components/admin_components/StatsBox';
@@ -7,15 +10,27 @@ import '../../styles/AdminDashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AddTutorModal from '../../components/admin_components/AddTutorModal';
 
-const users = [
-    {"firstname":null, "lastname": null, "email": "palalasare@gmail", "class":2025, "role":"student"},
-    {"firstname":"Palal", "lastname": "Asare", "email": "palalasare@gmail", "class":2025, "role":"tutor"}
-]
+// const users = [
+//     {"firstname":null, "lastname": null, "email": "palalasare@gmail", "class":2025, "role":"student"},
+//     {"firstname":"Palal", "lastname": "Asare", "email": "palalasare@gmail", "class":2025, "role":"tutor"}
+// ]
 
 function AdminDashboard () {
 
+    const { students } = useContext(StudentContext);
+    const { tutors } = useContext(TutorContext);
+    const { user, setUser } = useContext(UserContext);
+
     const [isOnDashboard, setIsOnDasbhard] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Combine students and tutors into one array
+    const allUsers = [...students, ...tutors];
+
+    // dashboard stats
+    const totalUsers = allUsers.length;
+    const totalStudents = students.length;
+    const totalTutors = tutors.length;
 
     // handel tab switch 
     const handleTabSwitch = () => {
@@ -26,6 +41,13 @@ function AdminDashboard () {
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
+
+    // handle logout
+    const handleLogout = () => {
+        setUser(null);
+        localStorage.removeItem('lastPath');
+        navigate('/');
+    }
 
     return (
         <div className="admin-dashboard">
@@ -41,7 +63,7 @@ function AdminDashboard () {
                         <p>Users</p>
                     </div>
                 </div>
-                <div className="logout">
+                <div className="logout" onClick={handleLogout}>
                     <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" />
                     <p>Logout</p>
                 </div>
@@ -54,9 +76,13 @@ function AdminDashboard () {
                     </div>
 
                     {isOnDashboard ? (
-                        <DashboardStats />
+                        <DashboardStats 
+                            totalStudents={totalStudents}
+                            totalTutors={totalTutors}
+                            totalUsers={totalUsers}
+                        />
                     ): (
-                        <UsersAvailable handleToggle={toggleModal}/>
+                        <UsersAvailable handleToggle={toggleModal} users={allUsers}/>
                     )
                     }
                     
@@ -65,13 +91,13 @@ function AdminDashboard () {
             <AddTutorModal 
                 show={isModalOpen}
                 onClose={toggleModal}
-                students={users}
+                studentUsers={students}
             />
         </div>
     )
 }
 
-function UsersAvailable ({handleToggle}) {
+function UsersAvailable ({handleToggle, users}) {
 
 
     return (
@@ -86,18 +112,16 @@ function UsersAvailable ({handleToggle}) {
                 <h2 className='container-title'>Users</h2>
                 <div className="container-table">
                     <div className='container-table-header'>
-                        <p>NAME</p>
                         <p>EMAIL</p>
                         <p>CLASS</p>
                         <p>ROLE</p>
                     </div>
                     <div className="container-content">
-                        {users.map((user, index) => (
-                            <div className="container-row" key={index}>
-                                <p>{user.firstname ? user.firstname : "no-name"} {user.lastname ? user.lastname : ""}</p>
+                        {users.map((user, _) => (
+                            <div className="container-row" key={user.id}>
                                 <p>{user.email}</p>
-                                <p>{user.class}</p>
-                                <p>{user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
+                                <p>{user.class || "N/A"}</p>
+                                <p>{user.is_tutor ? "Tutor" : "Student"}</p>
                             </div>
                         ))}
                     </div>
@@ -108,15 +132,15 @@ function UsersAvailable ({handleToggle}) {
     )
 }
 
-function DashboardStats () {
+function DashboardStats ({totalUsers, totalStudents, totalTutors}) {
     return(
         <div className="details">
             <h1>User Statistics</h1>
             <div className="stats">
-                <StatsBox statName={"Total Users"} statNumber={376}/>
-                <StatsBox statName={"Total Users"} statNumber={376}/>
-                <StatsBox statName={"Total Users"} statNumber={376}/>
-                <StatsBox statName={"Total Users"} statNumber={376}/>
+                <StatsBox statName={"Total Users"} statNumber={totalUsers}/>
+                <StatsBox statName={"Total Students"} statNumber={totalStudents}/>
+                <StatsBox statName={"Total Tutors"} statNumber={totalTutors}/>
+                <StatsBox statName={"Total Tutors"} statNumber={totalTutors}/>
             </div>
         </div>
     )

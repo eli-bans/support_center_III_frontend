@@ -17,16 +17,29 @@ import ForgetPasswordPage from './pages/ForgetPasswordPage';
 import FindTutorPage from './pages/FindTutorPage';
 import TutorDashboard from './pages/tutor/TutorDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import { StudentProvider } from './contexts/StudentContext';
+import { TutorProvider } from './contexts/TutorContext';
+import { AdminProvider } from './contexts/AdminContext';
+import RedirectOnLoad from './routes/RedirectOnLoad';
+import RouteTracker from './routes/RouteTracker';
+import ForumPage from './pages/ForumPage';
 
 function App() {
 
   return (
     <>
       <UserProvider>
+      <AdminProvider>
+      <TutorProvider>
+      <StudentProvider >
         <Router>
           <AppContent />
         </Router>
+      </StudentProvider>
+      </TutorProvider>
+      </AdminProvider>
       </UserProvider>
+
     </>
   )
 }
@@ -36,6 +49,8 @@ function AppContent(){
   
   return(
     <div className="view-container">
+      <RedirectOnLoad />
+      <RouteTracker />
       <div className="main-view">
         {/* <Navbar /> */}
         {location.pathname !== '/admin-dashboard' && <Navbar />}
@@ -45,6 +60,7 @@ function AppContent(){
           <Route path='/login' element={<LoginPage />} />
           <Route path='/forget-password' element={<ForgetPasswordPage />} />
           <Route path='/find-tutor' element={<FindTutorPage />} />
+          <Route path='/forum' element={<ForumPage />} />
 
           {/* Protected Routes */}
           <Route path='/tutor-dashboard' element={

@@ -1,5 +1,5 @@
 // import packages
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 // import styles and images
 import '../styles/FindTutorPage.css';
@@ -11,15 +11,10 @@ import Footer from '../components/Footer';
 import Modal from '../components/find_tutor/Modal';
 import BookingModal from '../components/find_tutor/BookingModal';
 import Payment from '../components/payment/Payment';
-
-// Tutor call structure
-const tutors = [
-    { id: 1, email:"pinopalal11@gmail.com", firstname: "Palal", lastname: "Asare", courses: ["Chemistry", "Data Structures & Algorithms"], image_path: ProfileImage, stars: 5, year: 2025, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
-    { id: 2, email:"pinopalal11@gmail.com", firstname: "Jane", lastname: "Doe", courses: ["Mathematics", "Physics"], image_path: ProfileImage, stars: 4, year: 2023, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
-    { id: 3, email:"pinopalal11@gmail.com", firstname: "John", lastname: "Smith", courses: ["English", "History"], image_path: ProfileImage, stars: 5, year: 2024, calendlyUrl: "https://calendly.com/palalasare/30min", subaccount: "ACCT_gphuk9eulaie9ha" },
-];
+import { TutorContext } from '../contexts/TutorContext';
 
 function FindTutorPage () {
+    const { tutors } = useContext(TutorContext);
     const [filters, setFilters] = useState({ subject: '', year: '' });
     const [filteredTutors, setFilteredTutors] = useState(tutors);
     const [searchTerm, setSearchTerm] = useState('');
@@ -74,7 +69,7 @@ function FindTutorPage () {
 
     // Modal for booking a meeting
     const openBookingModal = (tutor) => {
-        setSelectedCalendlyUrl(tutor.calendlyUrl);
+        setSelectedCalendlyUrl(tutor.calendly_link);
         setSelectedTutor(tutor);
         setIsBookingModalOpen(true);
         console.log('working');
@@ -150,8 +145,8 @@ function FindTutorPage () {
                                     firstname={tutor.firstname}
                                     lastname={tutor.lastname}
                                     courses={tutor.courses}
-                                    image_path={tutor.image_path}
-                                    stars={tutor.stars}
+                                    image_path={tutor.profile_picture}
+                                    stars={tutor.rating}
                                     year={tutor.year}
                                     onViewProfile={() => openModal(tutor)}
                                     onScheduleMeeting={() => openBookingModal(tutor)}

@@ -131,7 +131,7 @@
 
 .container-table-header{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     font-size: 12px;
     margin-bottom: 10px;
     border-bottom: 1px solid rgba(102, 101, 101, 0.333);
@@ -146,7 +146,7 @@
 
 .container-row {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     font-size: 12px;
     font-weight: bold;
     color: #2B3674;

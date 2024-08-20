@@ -9,19 +9,18 @@ function FilterComponent({ onFilterChange }) {
   const [selectedYear, setSelectedYear] = useState('');
 
   const subjects = [
-    'Introduction to AI',
-    'Data Structures & Algorithms',
-    'Web Technologies',
-    'Modelling & Simulation',
-    'Headphone'
+    { fullName: 'Introduction to AI', shortName: 'AI' },
+    { fullName: 'Data Structures & Algorithms', shortName: 'DS' },
+    { fullName: 'Web Technologies', shortName: 'WT' },
+    { fullName: 'Modelling & Simulation', shortName: 'MS' },
   ];
 
   const years = [2025, 2026, 2027];
 
   // For when a subject is selected
-  const handleSubjectChange = (subject) => {
-    setSelectedSubject(subject);
-    onFilterChange({ subject, year: selectedYear });
+  const handleSubjectChange = (shortName) => {
+    setSelectedSubject(shortName);
+    onFilterChange({ subject: shortName, year: selectedYear });
   };
 
   // For when a year group is selected
@@ -38,13 +37,13 @@ function FilterComponent({ onFilterChange }) {
           <div key={subject}>
             <input
               type="radio"
-              id={subject}
+              id={subject.shortName}
               name="subject"
-              value={subject}
-              checked={selectedSubject === subject}
-              onChange={() => handleSubjectChange(subject)}
+              value={subject.shortName}
+              checked={selectedSubject === subject.shortName}
+              onChange={() => handleSubjectChange(subject.shortName)}
             />
-            <label htmlFor={subject}>{subject}</label>
+            <label htmlFor={subject.shortName}>{subject.fullName}</label>
           </div>
         ))}
       </div>

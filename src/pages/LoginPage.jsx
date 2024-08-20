@@ -14,7 +14,7 @@ import TwoBlackMen from '../assets/two-black-men.png';
 function LoginPage () {
 
     // user states
-    const { setUser } = useContext(UserContext);
+    const { login } = useContext(UserContext);
     const navigate = useNavigate();
     
     // Hide and show password
@@ -43,45 +43,49 @@ function LoginPage () {
         }
 
         try {
-            // TODO: Make api request
 
-            const response = {
-                "id": 1,
-                "email": "elikembansah1@gmail.com",
-                "is_student": false,
-                "is_tutor": false,
-                "is_admin": true,
-                "profile_picture": "http://127.0.0.1:8000/media/profile_pictures/None/IMG_2012.JPG"
-            }
+            // Log user in
+            const {isSuccess, errorMessage, user} = await login(email, password);
 
-            // Determine user role
-            const role = response.is_student ? 'student' : response.is_tutor ? 'tutor' : 'admin';
+            if (isSuccess) {
 
-            setUser({
-                "id": response.id,
-                "email": response.email,
-                "role": role,
-                "profile_picture": response.profile_picture
-            });
+                if(user) {
 
-            // reset email
-            setEmail('');
-            setPassword('');
+                    let userRole;
+                    if(user.is_student) {
+                        userRole = 'student';
+                    } else if (user.is_tutor) {
+                        userRole = 'tutor';
+                    } else {
+                        userRole = 'admin';
+                    }
 
-            // Set the password
-            setShowPassword(false);
+                    // Reset email and password
+                    setEmail('');
+                    setPassword('');
 
-            // Navigate back to home page
-            switch (role) {
-                case 'student':
-                    navigate('/');
-                    break;
-                case 'tutor':
-                    navigate('/');
-                    break;
-                case 'admin':
-                    navigate('/admin-dashboard');
-                    break;
+                    // Set the password visibility
+                    setShowPassword(false);
+
+                    // Navigate based on the role
+                    switch (userRole) {
+                        case 'student':
+                        case 'tutor':
+                            navigate('/');
+                            break;
+                        case 'admin':
+                            navigate('/admin-dashboard');
+                            break;
+                        default:
+                            console.error('Unexpected role:', userRole);
+                            alert('Unexpected role. Please contact support.');
+                    }
+
+                } else {
+                    console.log("user is empty: not initialised in time");
+                }
+            } else {
+                alert(errorMessage);
             }
 
         } catch (error) {
@@ -134,7 +138,7 @@ function LoginPage () {
                             <p className='advice'>Must be at least 8 characters</p>
                             <Link to='/forget-password'><p className='forget-password'>Forgot Password?</p></Link>
                         </div>
-                        <button type='submit'>Sign Up</button>
+                        <button type='submit'>Sign In</button>
                         <p className='existing-account'>Don't have an account? <Link to='/register'><span>Register</span></Link></p>
                     </form>
                 </div>

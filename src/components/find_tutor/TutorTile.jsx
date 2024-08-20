@@ -1,6 +1,6 @@
 // import styles and images
 import '../../styles/TutorTile.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function TutorTile ({
     firstname, lastname, 

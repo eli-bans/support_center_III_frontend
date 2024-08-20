@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../../styles/AddTutorModal.css';
 
-const AddTutorModal = ({ show, onClose, students, apiEndpoint }) => {
+import { TutorContext } from '../../contexts/TutorContext';
+import { StudentContext } from '../../contexts/StudentContext';
+
+const AddTutorModal = ({ show, onClose, studentUsers, apiEndpoint }) => {
+  const { students, setStudents } = useContext(StudentContext);
+  const { tutors, setTutors } = useContext(TutorContext);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
@@ -15,8 +21,6 @@ const AddTutorModal = ({ show, onClose, students, apiEndpoint }) => {
     setSearchTerm(value);
 
     const filtered = students.filter(student =>
-      student.firstname?.toLowerCase().includes(value) ||
-      student.lastname?.toLowerCase().includes(value) ||
       student.email?.toLowerCase().includes(value)
     );
     setFilteredStudents(filtered);
@@ -24,7 +28,7 @@ const AddTutorModal = ({ show, onClose, students, apiEndpoint }) => {
 
   const handleStudentSelect = (student) => {
     setSelectedStudent(student);
-    setSearchTerm(`${student.firstname} ${student.lastname}`);
+    setSearchTerm(student.email);
     setFilteredStudents([]);
   };
 
@@ -44,26 +48,21 @@ const AddTutorModal = ({ show, onClose, students, apiEndpoint }) => {
       email: selectedStudent.email,
     };
 
-    try {
-            //TODO: hit api
-            const response = await fetch(apiEndpoint, {
-                method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-                body: JSON.stringify(payload),
-            });
+    const newTutor = {
+      ...selectedStudent,
+      is_student: false,
+      is_tutor: true,
+      year: selectedYear,
+      calendly_link: calendlyUrl,
+    };
 
-            if (response.ok) {
-                alert('Tutor added successfully!');
-            onClose();
-            } else {
-                alert('Failed to add tutor. Please try again.');
-            }
-        } catch (error) {
-            alert('An error occurred. Please try again.');
-            console.error('Error:', error);
-        }
+    // Remove the student from the StudentContext
+    const updatedStudents = students.filter(student => student.id !== selectedStudent.id);
+    setStudents(updatedStudents);
+
+    setTutors([...tutors, newTutor]);
+    alert('Tutor added successfully!');
+    onClose();
   };
 
   if (!show) return null;
@@ -119,13 +118,13 @@ const AddTutorModal = ({ show, onClose, students, apiEndpoint }) => {
             {searchTerm && (
               <div className="search-dropdown">
                 {filteredStudents.length ? (
-                  filteredStudents.map((student, index) => (
+                  filteredStudents.map((student, _) => (
                     <div
-                      key={index}
+                      key={student.id}
                       className="dropdown-item"
                       onClick={() => handleStudentSelect(student)}
                     >
-                      {`${student.firstname || "No Name"} ${student.lastname || ""} - ${student.email}`}
+                      {student.email}
                     </div>
                   ))
                 ) : (

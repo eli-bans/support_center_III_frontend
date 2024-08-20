@@ -1,7 +1,9 @@
 // External packages
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { StudentContext } from '../contexts/StudentContext';
+import { UserContext } from '../contexts/UserContext';
 
 // styling and image imports
 import '../styles/RegisterPage.css';
@@ -9,7 +11,10 @@ import BlackMeeting from '../assets/black-meeting.png';
 import Footer from '../components/Footer';
 
 function RegisterPage () {
-    
+    const { students, setStudents } = useContext(StudentContext);
+    const { register } = useContext(UserContext);
+    const navigate = useNavigate();
+
     // Hide and show passwords
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -44,20 +49,28 @@ function RegisterPage () {
         }
 
         try {
-            // TODO: Make api request
+            // Api request for register
+            const { isSuccess, errorMessage } = await register(email, password);
 
-            // reset email
-            setEmail('');
-            setPassword('');
-            setConfirmPassword('');
+            if(isSuccess) {
+                // reset email
+                setEmail('');
+                setPassword('');
+                setConfirmPassword('');
 
-            // Set the password
-            setShowPassword(false);
-            setShowConfirmPassword(false);
+                // Set the password
+                setShowPassword(false);
+                setShowConfirmPassword(false);
+
+                //navigate to login page
+                navigate('/login');
+            } else {
+                // show error as alert
+                alert(errorMessage);
+            }
 
         } catch (error) {
-            console.error('Registration failed:', error);
-            alert('Registration failed. Please try again.');
+            console.error('Unknown registration error:', error);
         }
     };
 
