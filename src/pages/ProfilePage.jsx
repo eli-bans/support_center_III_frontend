@@ -5,7 +5,7 @@ function ProfilePage() {
 
     return (
         <>
-            <div className="profile">
+            <div className="profile-page">
                 <div className="container">
                     <h1>Hello, Alvin</h1>
                     <p>Kindly edit and setup your profile however you see fit.</p>

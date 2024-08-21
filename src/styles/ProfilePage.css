@@ -1,9 +1,9 @@
-h1 {
+.profile-page h1 {
     color: black;
     font-size: 16px;
 }
 
-h2 {
+.profile-page h2 {
     color: black;
     font-size: 13px;
     font-weight: normal;
@@ -11,11 +11,11 @@ h2 {
     padding: 5px 15px;
 }
 
-p {
+.profile-page p {
     font-size: 12px;
 }
 
-.profile {
+.profile-page {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -23,7 +23,7 @@ p {
     
 }
 
-.profile .container {
+.profile-page .container {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -34,7 +34,7 @@ p {
     padding: 40px 50px;
 }
 
-.profile .container .account-info {
+.profile-page .container .account-info {
     border: 1px solid rgba(77, 75, 75, 0.345);
     border-radius: 3px;
     margin-top: 13px;
