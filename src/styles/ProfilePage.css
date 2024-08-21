@@ -1,0 +1,45 @@
+h1 {
+    color: black;
+    font-size: 16px;
+}
+
+h2 {
+    color: black;
+    font-size: 13px;
+    font-weight: normal;
+    border-bottom: 1px solid rgba(77, 75, 75, 0.345);
+    padding: 5px 15px;
+}
+
+p {
+    font-size: 12px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 50px 70px 0px 70px;
+    
+}
+
+.profile .container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: white;
+    height: 100%;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    padding: 40px 50px;
+}
+
+.profile .container .account-info {
+    border: 1px solid rgba(77, 75, 75, 0.345);
+    border-radius: 3px;
+    margin-top: 13px;
+}
+
+.container .account-info .details {
+    padding: 5px 15px;
+}

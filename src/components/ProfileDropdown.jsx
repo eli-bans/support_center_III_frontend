@@ -15,6 +15,11 @@ function ProfileDropdown ({isOpen}) {
         navigate('/tutor-dashboard');
     }
 
+    //Handle profile page route
+    const handleProfileRoute = () => {
+        navigate('/profile');
+    }
+
     // Handle user logout
     const handleLogout = () => {
         setUser(null);
@@ -29,7 +34,7 @@ function ProfileDropdown ({isOpen}) {
             {user.role === 'tutor' && (
                 <p onClick={handleDashboardRoute} className='dashboard'>Dashboard</p>
             )}
-            <p className='profile'>Profile</p>
+            <p className='profile' onClick={handleProfileRoute}>Profile</p>
             <p className='logout' onClick={handleLogout}>Logout</p>
         </div>
     )
