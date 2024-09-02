@@ -10,7 +10,7 @@ import { UserContext } from '../contexts/UserContext';
 import '../styles/Navbar.css'
 import ProfileImage from '../assets/person-image.jfif';
 import ProfileDropdown from './ProfileDropdown';
-import DefaultImage from '../assets/default_image.png';
+import DefaultImage from '../assets/default_image.jpg';
 
 const Navbar = () => {
   const {user} = useContext(UserContext);
