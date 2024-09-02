@@ -23,6 +23,7 @@ import { AdminProvider } from './contexts/AdminContext';
 import RedirectOnLoad from './routes/RedirectOnLoad';
 import RouteTracker from './routes/RouteTracker';
 import ForumPage from './pages/ForumPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
 
@@ -61,6 +62,7 @@ function AppContent(){
           <Route path='/forget-password' element={<ForgetPasswordPage />} />
           <Route path='/find-tutor' element={<FindTutorPage />} />
           <Route path='/forum' element={<ForumPage />} />
+          <Route path='/profile' element={<ProfilePage />} />
 
           {/* Protected Routes */}
           <Route path='/tutor-dashboard' element={

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext } from 'react';
 // import styles and images
 import '../styles/FindTutorPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ProfileImage from '../assets/profile-image.png'
+import DefaultImage from '../assets/default_image.jpg';
 import TutorTile from '../components/find_tutor/TutorTile';
 import FilterPane from '../components/find_tutor/FilterPane';
 import Footer from '../components/Footer';
@@ -145,7 +145,7 @@ function FindTutorPage () {
                                     firstname={tutor.firstname}
                                     lastname={tutor.lastname}
                                     courses={tutor.courses}
-                                    image_path={tutor.profile_picture}
+                                    image_path={tutor.profile_picture || DefaultImage}
                                     stars={tutor.rating}
                                     year={tutor.year}
                                     onViewProfile={() => openModal(tutor)}
