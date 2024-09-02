@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
 import PalalProfile from '../assets/palal-profile.jfif';
 import JesseProfile from '../assets/jesse-profile.jfif';
-import DefaultImage from '../assets/default_image.png';
+import DefaultImage from '../assets/default_image.jpg';
 
 export const StudentContext = createContext();
 
