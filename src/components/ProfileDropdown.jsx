@@ -32,9 +32,14 @@ function ProfileDropdown ({isOpen}) {
     return (
         <div className="profile-container">
             {user.role === 'tutor' && (
+                <>
                 <p onClick={handleDashboardRoute} className='dashboard'>Dashboard</p>
+                <p className='profile' onClick={handleProfileRoute}>Profile</p>
+                </>
             )}
-            <p className='profile' onClick={handleProfileRoute}>Profile</p>
+            {user.role === 'student' && (
+                <p className='change-picture' >Change Image</p>
+            )}
             <p className='logout' onClick={handleLogout}>Logout</p>
         </div>
     )
