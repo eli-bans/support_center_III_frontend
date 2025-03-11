@@ -18,3 +18,6 @@
 - **App.js**: The main app component where you configure routes and wrap your app with necessary providers.
 - **index.js**: The entry point for your React application where the ReactDOM renders the `App` component.
 
+### Important Links
+- Figma Prototype: https://www.figma.com/design/5bonBqUQIL6GIeluRyS6Nh/Support-Center?node-id=0-1&t=bnbrEkJpI4UcoKsI-1
+- Product Link: https://support-center-d32c0.web.app/
